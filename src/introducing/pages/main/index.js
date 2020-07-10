@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-import blog1 from '../../../assets/images/blog1.jpg'
-import blog2 from '../../../assets/images/blog2.jpg'
-import blog3 from '../../../assets/images/blog3.jpg'
+import blog1 from '../../../assets/introducing/images/blog1.jpg'
+import blog2 from '../../../assets/introducing/images/blog2.jpg'
+import blog3 from '../../../assets/introducing/images/blog3.jpg'
 
-import s1 from '../../../assets/images/s1.png'
-import s2 from '../../../assets/images/s2.png'
-import s3 from '../../../assets/images/s3.png'
-import s4 from '../../../assets/images/s4.png'
-import img from '../../../assets/images/img.png'
-
+import s1 from '../../../assets/introducing/images/s1.png'
+import s2 from '../../../assets/introducing/images/s2.png'
+import s3 from '../../../assets/introducing/images/s3.png'
+import s4 from '../../../assets/introducing/images/s4.png'
+import img from '../../../assets/introducing/images/img.png'
+import './style.css'
 export default class Main extends Component{
     render(){
         return (
@@ -21,14 +21,15 @@ export default class Main extends Component{
                                 <div className="container">
                                     <div className="banner-info_agile_w3ls">
                                         <h5>Faça suas compras</h5>
-                                        <h3 className="text-da mb-4">Próximo ao seu condomínio <br /><span>Seu pedido em até 30 minutos</span> </h3>
+                                        <h3 className="text-da mb-4 compras">Próximo ao seu condomínio <br /><span>Seu pedido em até 30 minutos</span> </h3>
                                         <p>Suas compras a um clique</p>
-                                        <a href="about.html" className="button-w3ls active mt-5">Read More
-                                            <span className="fa fa-caret-right ml-1" aria-hidden="true"></span>
-                                        </a>
-                                        <a href="menu.html" className="button-w3ls mt-5 ml-2">Comprar Agora
-                                            <span className="fa fa-caret-right ml-1" aria-hidden="true"></span>
-                                        </a>
+                                       
+                                        <div class="input-wrapper">
+                                            <label for="stuff" class="fa fa-search input-icon"></label>
+                                            <input id="stuff" className="form-control text-condominio"placeholder="Informe seu condomínio"/>
+                                            
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,15 @@
+.input-icon{
+  position: absolute;
+  left: 3px;
+  top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+}
+input{
+  padding-left: 27px !important; 
+}
+.input-wrapper{
+  position: relative;
+}
+
+.mb-4{
+  font-size: 30px !important
+}

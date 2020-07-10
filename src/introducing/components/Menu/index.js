@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from '../../../assets/images/logo.png'
+import logo from '../../../assets/introducing/images/logo.png'
 
 export default class Menu extends Component {
     render(){
@@ -9,7 +9,7 @@ export default class Menu extends Component {
                 <div className="container">
                     <div className="nav-content">
                         <h1>
-                            <NavLink id="logo" className="logo" to="/" activeClassName="active">
+                            <NavLink id="logo" className="logo" to="/banner" activeClassName="active">
                                 <img src={logo} alt="" className="img-fluid" /><span></span> Yunie
                             </NavLink>
                         </h1>
@@ -19,11 +19,10 @@ export default class Menu extends Component {
                                 <label for="drop" className="toggle">Menu</label>
                                 <input type="checkbox" id="drop" />
                                 <ul className="menu">
-                                    <li><NavLink to="/" activeClassName="active">Início</NavLink></li>
+                                    <li ><NavLink to="/" activeClassName="active">Início</NavLink></li>
                                     <li><NavLink to="/about" activeClassName="active">Sobre nós</NavLink></li>
                                     <li><NavLink to="/register" activeClassName="active">Cadastre-se</NavLink></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-
+                                    <li><NavLink to="/contact" activeClassName="active">Nos contate</NavLink></li>
                                 </ul>
                             </nav>
                         </div>

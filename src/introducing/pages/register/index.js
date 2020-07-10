@@ -29,18 +29,21 @@ const Register = () => (
 							<input type="email" className="form-control" name="email" placeholder="" required="" />
 						</div>
 						
-						<div className="col-xs-6">
-							<div className="form-group">
-								<label>Número da Casa/Apto</label>
-								<input  className="form-control" name="email" placeholder="" required="" />
-							</div>	 
-						</div>
-
-						<div className="col-xs-6">
-							<div className="form-group">
-								<label>Número da Quadra/Bloco/Torre</label>
-								<input className="form-control" name="email" placeholder="" required="" />
+						<div className="row">
+							<div className="col-lg-6 form-group pr-lg-2">
+								
+								<label>Casa/Apto</label>
+								<input className="form-control" name="email" placeholder="Número " required="" />
+								
 							</div>
+
+							<div className="col-lg-6 form-group pr-lg-2">
+								
+									<label>Quadra/Bloco/Torre</label>
+									<input className="form-control" name="email" placeholder="Número" required="" />
+								
+							</div>
+							 
 						</div>
 						
 

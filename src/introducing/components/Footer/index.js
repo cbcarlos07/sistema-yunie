@@ -1,10 +1,10 @@
 import React from 'react'
 
-import logo from '../../../assets/images/logo.png'
-import pay2 from '../../../assets/images/pay2.png'
-import pay5 from '../../../assets/images/pay5.png'
-import pay1 from '../../../assets/images/pay1.png'
-import pay4 from '../../../assets/images/pay4.png'
+import logo from '../../../assets/introducing/images/logo.png'
+import pay2 from '../../../assets/introducing/images/pay2.png'
+import pay5 from '../../../assets/introducing/images/pay5.png'
+import pay1 from '../../../assets/introducing/images/pay1.png'
+import pay4 from '../../../assets/introducing/images/pay4.png'
 
 
 const Footer = () => (

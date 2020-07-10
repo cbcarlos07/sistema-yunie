@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Locate from '../../components/Locate'
-import ab from '../../../assets/images/ab.jpg'
+import ab from '../../../assets/introducing/images/ab.jpg'
 
 
 export default class About extends Component{

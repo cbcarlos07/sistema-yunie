@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 
 const Header = () => (
     <header id="home">
@@ -16,7 +16,7 @@ const Header = () => (
 							</div>
 							<div className="col-xl-3 col-6 header-top_w3layouts">
 								<p className="text-da">
-									<span className="fa fa-phone mr-2"></span>+55 (92) 9 8250-2212
+									<span className="fa fa-phone mr-2"></span>(92) 9 8250-2212
 								</p>
 							</div>
 							<div className="col-xl-6"></div>
@@ -26,8 +26,8 @@ const Header = () => (
 						<div className="row middle-flex">
 							<div className="col-lg-5 col-4 top-w3layouts p-md-0 text-right">
 								
-								<a href="login.html" className="btn login-button-2 text-uppercase text-wh">
-									<span className="fa fa-sign-in mr-2"></span>Entrar</a>
+								<Link to="/login" className="btn login-button-2 text-uppercase text-wh">
+									<span className="fa fa-sign-in mr-2"></span>Entrar</Link>
 								
 							</div>
 							<div className="col-lg-7 col-8 social-grid-w3">
