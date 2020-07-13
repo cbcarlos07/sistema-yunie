@@ -10,6 +10,8 @@ import Contact from './introducing/pages/contact';
 import Login from './introducing/pages/login';
 import ManagerLayoutRoute from './manager';
 import Home from './manager/pages/banner';
+import Find from './manager/pages/find';
+import Services from './manager/pages/servicos';
 
 
 
@@ -22,7 +24,8 @@ const  Routes = () => (
 				<IntroLayoutRoute path="/contact" component={Contact} />
 				<IntroLayoutRoute path="/login" component={Login} />
                 <ManagerLayoutRoute path="/banner" component={Home}/>
-                
+				<ManagerLayoutRoute path="/encontra" component={Find}/>
+				<ManagerLayoutRoute path="/servicos" component={Services}/>                
 			</Switch>
             
 		</BrowserRouter>

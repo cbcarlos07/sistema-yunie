@@ -10,7 +10,9 @@ const Banner = () => {
         subtitulo: '',
 		descricao: '',
 		slogan: ''
-    })
+	})
+	
+	
 	function handleInputChange(event){
         const { name, value } = event.target
         setFormData({...formData, [name]: value})
@@ -43,7 +45,7 @@ const Banner = () => {
 
 			<div className="box box-primary">
 				<div className="box-header with-border">
-					<h3 className="box-title">Quick Example</h3>
+					<h3 className="box-title">Tela Inicial</h3>
 				</div>
 				
 				<form role="form" onSubmit={handleSubmit}>

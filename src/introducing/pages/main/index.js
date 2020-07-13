@@ -9,6 +9,10 @@ import s2 from '../../../assets/introducing/images/s2.png'
 import s3 from '../../../assets/introducing/images/s3.png'
 import s4 from '../../../assets/introducing/images/s4.png'
 import img from '../../../assets/introducing/images/img.png'
+
+import img1 from '../../../assets/introducing/images/1.jpg'
+import img2 from '../../../assets/introducing/images/2.jpg'
+import img3 from '../../../assets/introducing/images/3.jpg'
 import './style.css'
 export default class Main extends Component{
     render(){
@@ -42,13 +46,19 @@ export default class Main extends Component{
                                 <input type="radio" name="slides" id="slides_3" />
                                 <ul className="banner_slide_bg">
                                     <li>
-                                        <div className="banner-top1"></div>
+                                        <div className="banner-top1">
+                                            <img src={img1} className="banner-1"/>
+                                        </div>
                                     </li>
                                     <li>
-                                        <div className="banner-top2"></div>
+                                        <div className="banner-top2">
+                                            <img src={img2} className="banner-2"/>
+                                        </div>
                                     </li>
                                     <li>
-                                        <div className="banner-top3"></div>
+                                        <div className="banner-top3">
+                                            <img src={img3} className="banner-3"/>
+                                        </div>
                                     </li>
                                 </ul>
                                 <div className="arrows">
@@ -130,6 +140,9 @@ export default class Main extends Component{
                                 </div>
                             </div>
  
+                            
+
+
                         </div>
                     </div>
                 </section>

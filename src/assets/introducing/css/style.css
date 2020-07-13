@@ -509,7 +509,7 @@ button.submit {
 .banner-info_agile_w3ls {
     padding-top: 10em;
     padding-left: 5em;
-}`
+}
 
 .banner-info_agile_w3ls h5 {
     font-family: 'Lato', sans-serif;
@@ -559,30 +559,35 @@ a.button-w3ls:hover {
 }
 
 .banner-top1 {
-    background: url(../images/1.jpg) no-repeat bottom;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
+    /*background: url(../images/1.jpg) no-repeat bottom;*/
+    /*background-size: 10px;
+    -webkit-background-size: 10px;
+    -moz-background-size: 10px;
+    -o-background-size: 10px;
+    -moz-background-size: 10px;*/
 }
 
+
+.banner-1, .banner-2, .banner-3{
+    width: 750px;
+    align-items: baseline;
+}
 .banner-top2 {
-    background: url(../images/2.jpg) no-repeat bottom;
+   /* background: url(../images/2.jpg) no-repeat bottom;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    -moz-background-size: cover;
+    -moz-background-size: cover;*/
 }
 
 .banner-top3 {
-    background: url(../images/3.jpg) no-repeat bottom;
+    /*background: url(../images/3.jpg) no-repeat bottom;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    -moz-background-size: cover;
+    -moz-background-size: cover;*/
 }
 
 /* //right side slider */
