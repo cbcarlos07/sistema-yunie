@@ -1,19 +1,19 @@
 import * as restifyRouter from 'restify-router'
-import encontraController from '../controller/encontra.controller'
-import encontraItemController from '../controller/encontra-item.controller'
+import servicosController from '../controller/servicos.controller'
+import servicosItemController from '../controller/servicos-item.controller'
 import env from '../environments/environments'
 const Router = restifyRouter.Router
-const encontraRoute = new Router()
+const servicosRoute = new Router()
 
 var io: any
-const encontraRealtime = socket => {
+const servicosRealtime = socket => {
     io = socket
 }
 
-encontraRoute.post('', async (req, res, next)=>{
+servicosRoute.post('', async (req, res, next)=>{
     
     try {
-        let insert = await encontraController.create( req.body )
+        let insert = await servicosController.create( req.body )
         res.json({status: true})
     } catch (error) {
         res.json( error )
@@ -21,13 +21,13 @@ encontraRoute.post('', async (req, res, next)=>{
     next()
 })
 
-encontraRoute.put('/:id', async (req, res, next)=>{
+servicosRoute.put('/:id', async (req, res, next)=>{
     const {id} = req.params
     delete req.body.item
     console.log('body', req.body);
     
     try {
-        let update = await encontraController.update( id, req.body )
+        let update = await servicosController.update( id, req.body )
         
         
         io.emit('change',{status: true} )
@@ -39,27 +39,27 @@ encontraRoute.put('/:id', async (req, res, next)=>{
     next()
 })
 
-encontraRoute.get('', async (req, res, next)=>{
+servicosRoute.get('/', async (req, res, next)=>{
     
     try {
         
-        res.json( await encontraController.findAll( ) )
+        res.json( await servicosController.findAll( ) )
     } catch (error) {
         res.json( error )
     }
     next()
 })
 
-encontraRoute.get('/:id', async (req, res, next)=>{
+servicosRoute.get('/:id', async (req, res, next)=>{
     const {id} = req.params
     try {      
-        let encontra = await encontraController.findByPk( id )
-        let items = await encontraItemController.findAll()
+        let servicos = await servicosController.findByPk( id )
+        let items = await servicosItemController.findAll()
         let item = items.map( e => {
             e.imagem = e.imagem != null ?  `http://${env.IPLOCAL}:${env.SERVER_PORT}/foto/${e.imagem}` : ''
             return e
         } )
-        let obj = {...encontra.dataValues, item}
+        let obj = {...servicos.dataValues, item}
         res.json( obj )
         
     } catch (error) {
@@ -69,14 +69,14 @@ encontraRoute.get('/:id', async (req, res, next)=>{
 })
 
 
-encontraRoute.del('/:id', async (req, res, next)=>{
+servicosRoute.del('/:id', async (req, res, next)=>{
     const {id} = req.params
     try {      
-        res.json( await encontraController.delete( id ) )
+        res.json( await servicosController.delete( id ) )
     } catch (error) {
         res.json( error )
     }
     next()
 })
 
-export { encontraRoute , encontraRealtime}
+export { servicosRoute , servicosRealtime}

@@ -12,7 +12,8 @@ import ManagerLayoutRoute from './manager';
 import Home from './manager/pages/banner';
 import Find from './manager/pages/find';
 import Services from './manager/pages/servicos';
-import Cadastro from './manager/pages/find/cadastro'
+import FindCadastro from './manager/pages/find/cadastro'
+import ServicesCadastro from './manager/pages/servicos/cadastro'
 
 
 const  Routes = () => (
@@ -25,9 +26,11 @@ const  Routes = () => (
 				<IntroLayoutRoute path="/login" component={Login} />
                 <ManagerLayoutRoute path="/banner" component={Home}/>
 				<ManagerLayoutRoute exact path="/encontra" component={Find}/>
-				<ManagerLayoutRoute  path="/encontra/cadastro" component={Cadastro}/>
-				<ManagerLayoutRoute exact path="/encontra/editar/:id" component={Cadastro}/>
-				<ManagerLayoutRoute path="/servicos" component={Services}/>
+				<ManagerLayoutRoute path="/encontra/cadastro" component={FindCadastro}/>
+				<ManagerLayoutRoute exact path="/encontra/editar/:id" component={FindCadastro}/>
+				<ManagerLayoutRoute exact path="/servicos" component={Services}/>
+				<ManagerLayoutRoute path="/servicos/cadastro" component={ServicesCadastro}/>
+				<ManagerLayoutRoute exact path="/servicos/editar/:id" component={ServicesCadastro}/>
 				
 			</Switch>
             

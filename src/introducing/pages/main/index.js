@@ -21,7 +21,14 @@ import api from '../../../services/api'
 const ENDPOINT = "http://localhost:3001";
 
 const Home = () =>{
-    const [response, setResponse] = useState({banner: {}, encontra: {titulo: '', subtitulo: '', descricao: '', items: []}});
+    const [response, setResponse] = useState(
+            {
+                banner: {}, 
+                encontra: {titulo: '', subtitulo: '', descricao: '', items: []},
+                servicos: {titulo: '', subtitulo: '', descricao: '', itemsServices: [{},{},{},{}]}
+            });
+    const [items, setItems] = useState([{}])        
+
 
     useEffect(() => {
         const socket = socketIOClient(ENDPOINT);
@@ -41,7 +48,6 @@ const Home = () =>{
         api.get('/home')
            .then( resp => {
                console.log(resp.data);
-               
                setResponse(resp.data)
            })  
         
@@ -51,7 +57,7 @@ const Home = () =>{
         return (
             <>
 
-
+            
                 <div className="baneer-w3ls">
                     <div className="row no-gutters">
                         <div className="col-xl-5 col-lg-6">
@@ -154,22 +160,22 @@ const Home = () =>{
                     </div>
                 </section>
 	
-
+                
 				<section className="middle py-5" id="services">
 					<div className="container py-xl-5 py-lg-3">
 						<div className="title-section text-center mb-md-5 mb-4">
-							<p className="w3ls-title-sub">Nosso Trabalho</p>
-							<h3 className="w3ls-title mb-3">Excelentes <span>Serviços</span></h3>
+							<p className="w3ls-title-sub">{response.servicos.titulo}</p>
+							<h3 className="w3ls-title mb-3">{response.servicos.subtitulo} <span>{response.servicos.descricao}</span></h3>
 						</div>
 						<div className="row grids-w3 py-xl-5 py-lg-4 pt-lg-0 pt-4">
 							<div className="col-lg-5 w3pvt-lauits_banner_bottom_left">
 								<div className="row">
 									<div className="col-8 wthree_banner_bottom_grid_right text-right">
-										<h4 className="mb-3"><a href="login.html">Taxa Justa</a></h4>
-										<p>Taxa de entrega com valor justo</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[0].titulo}</a></h4>
+										<p>{response.servicos.itemsServices[0].descricao}</p>
 									</div>
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
-										<img src={s1} alt="" className="img-fluid" />
+										<img src={response.servicos.itemsServices[0].imagem} alt="" className="img-fluid" />
 									</div>
 								</div>
 							</div>
@@ -179,11 +185,11 @@ const Home = () =>{
 							<div className="col-lg-5 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
 								<div className="row">
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
-										<img src={s2} alt="" className="img-fluid" />
+										<img src={response.servicos.itemsServices[1].imagem} alt="" className="img-fluid" />
 									</div>
 									<div className="col-8 wthree_banner_bottom_grid_right">
-										<h4 className="mb-3"><a href="login.html">Compras rápidas</a></h4>
-										<p>Suas compras em até 30 minutos. Exceto produtos feitos na hora.</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[1].titulo}</a></h4>
+										<p>{response.servicos.itemsServices[1].descricao}</p>
 									</div>
 								</div>
 							</div>
@@ -192,25 +198,25 @@ const Home = () =>{
 							<div className="col-lg-4 w3pvt-lauits_banner_bottom_left">
 								<div className="row">
 									<div className="col-8 wthree_banner_bottom_grid_right text-right pl-lg-0">
-										<h4 className="mb-3"><a href="login.html">Atendimento Exclusivo</a></h4>
-										<p>Atendimento exclusivo para moradores de condomínio.</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[2].titulo}</a></h4>
+										<p>{response.servicos.itemsServices[2].descricao}</p>
 									</div>
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pr-lg-0">
-										<img src={s3} alt="" className="img-fluid" />
+										<img src={response.servicos.itemsServices[2].imagem} alt="" className="img-fluid" />
 									</div>
 								</div>
 							</div>
-							<div className="col-lg-4 w3pvt-lauits_banner_bottom_left pr-0">
+							<div className="col-lg-4 w3pvt-lauits_banner_bottom_left">
 
 							</div>
 							<div className="col-lg-4 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
 								<div className="row">
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pl-lg-0">
-										<img src={s4} alt="" className="img-fluid" />
+										<img src={response.servicos.itemsServices[3].imagem} alt="" className="img-fluid" />
 									</div>
 									<div className="col-8 wthree_banner_bottom_grid_right pr-lg-0">
-										<h4 className="mb-3"><a href="login.html">24/7 Support</a></h4>
-										<p>Morbi viverra lacus commodo felis semper lectus feugiat.</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[3].titulo}</a></h4>
+										<p>{response.servicos.itemsServices[2].descricao}</p>
 									</div>
 								</div>
 							</div>

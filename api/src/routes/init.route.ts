@@ -4,6 +4,8 @@ import bannerController from '../controller/banner.controller'
 import env from '../environments/environments'
 import encontraController from '../controller/encontra.controller'
 import encontraItemController from '../controller/encontra-item.controller'
+import servicosController from '../controller/servicos.controller'
+import servicosItemController from '../controller/servicos-item.controller'
 const Router = restifyRouter.Router
 const routerInstance = new Router()
 
@@ -32,11 +34,20 @@ routerInstance.get('home', async (req, res, next)=>{
         return e
     })
 
+    const services: any = await servicosController.findByPk(1)
+    const servicesItems = await servicosItemController.findAll()
+    const itemsServices = servicesItems.map( e =>{
+        e.imagem = `http://${env.IPLOCAL}:${env.SERVER_PORT}/foto/${e.imagem}`
+        return e
+    })
+
     const encontra = {...find.dataValues, items}
+    const servicos = {...services.dataValues, itemsServices}
     
     const retorno = {
         banner,
-        encontra
+        encontra,
+        servicos
     }
     
     try {
