@@ -11,16 +11,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "multer": "^1.4.2",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
     "restify-router": "^0.6.0",
     "sequelize": "^6.3.3",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "shortid": "^2.2.15",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "@types/multer": "^1.4.3",
     "@types/restify": "^8.4.2",
+    "@types/restify-cors-middleware": "^1.0.1",
     "@types/sequelize": "^4.28.9",
+    "@types/shortid": "0.0.29",
+    "@types/socket.io": "^2.1.8",
     "nodemon": "^2.0.4",
     "reflect-metadata": "^0.1.13",
     "sequelize-typescript": "^1.1.0",

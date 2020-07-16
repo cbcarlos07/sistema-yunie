@@ -22,18 +22,18 @@ export default class About extends Component{
 							enim totam rem aperiam.</p>
 					</div>
 
-					<div class="row">
+					<div className="row">
 
-						<div class="col-lg-6 pr-xl-5 mt-xl-2 mt-lg-0">
-							<h3 class="title-sub mb-4">Donec conse sapien archi<br />ut cursus rhons.</h3>
-							<p class="sub-para">Nullam dui mi, vulputate ac metus
+						<div className="col-lg-6 pr-xl-5 mt-xl-2 mt-lg-0">
+							<h3 className="title-sub mb-4">Donec conse sapien archi<br />ut cursus rhons.</h3>
+							<p className="sub-para">Nullam dui mi, vulputate ac metus
 								at, semper
 								varius orci. Nulla accumsan ac elit in congue. Class aptent taciti sociosqu ad litora torquent
 								per conubia.</p>	
 
 						</div>
-						<div class="col-lg-6 text-center mt-lg-0 mt-4">
-							<img src={ab} alt="about" class="img-fluid" />
+						<div className="col-lg-6 text-center mt-lg-0 mt-4">
+							<img src={ab} alt="about" className="img-fluid" />
 						</div>
 
 					</div>

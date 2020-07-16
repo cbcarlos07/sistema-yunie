@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dropzone from './dropzone'
+import api from '../../../services/api'
 
 const Banner = () => {
 	const [ selectedFile1, setSelectedFile1 ] = useState()
 	const [ selectedFile2, setSelectedFile2 ] = useState()
 	const [ selectedFile3, setSelectedFile3 ] = useState()
+	const [ img1, setImg1 ] = useState('')
+	const [ img2, setImg2 ] = useState('')
+	const [ img3, setImg3 ] = useState()
 	const [formData, setFormData] = useState({
         titulo: '',
         subtitulo: '',
@@ -12,6 +16,26 @@ const Banner = () => {
 		slogan: ''
 	})
 	
+	useEffect(()=>{
+		api.get('/yunie/v1/banner/1')
+		   .then( response =>{
+			   
+			   setFormData( response.data )
+			   if( response.data.imagem1 != null ){
+				   let string = `http://localhost:3001/foto/${response.data.imagem1}`
+				   setImg1( string )
+			   }
+			   if( response.data.imagem2 != null ){
+					let string = `http://localhost:3001/foto/${response.data.imagem2}`
+					setImg2( string )
+				}
+
+				if( response.data.imagem3 != null ){
+					let string = `http://localhost:3001/foto/${response.data.imagem3}`
+					setImg3( string )
+				}
+		   })
+	},[])
 	
 	function handleInputChange(event){
         const { name, value } = event.target
@@ -25,23 +49,24 @@ const Banner = () => {
 		const data = new FormData()
 		data.append('titulo', titulo)
 		data.append('subtitulo', subtitulo)
-		data.append('descrico', descricao)
+		data.append('descricao', descricao)
 		data.append('slogan', slogan)
 		if( selectedFile1 ){
-            data.append('image1', selectedFile1)
+            data.append('imagem1', selectedFile1)
 		}
 		if( selectedFile2 ){
-            data.append('image2', selectedFile2)
+            data.append('imagem2', selectedFile2)
 		}
 		if( selectedFile3 ){
-            data.append('image3', selectedFile3)
+            data.append('imagem3', selectedFile3)
 		}
+		await api.put('/yunie/v1/banner/1',data)
 		console.log('form', data);
 		
 	}
 
 	return (
-		<>
+		<>	
 
 			<div className="box box-primary">
 				<div className="box-header with-border">
@@ -51,57 +76,61 @@ const Banner = () => {
 				<form role="form" onSubmit={handleSubmit}>
 					<div className="box-body">
 						<div className="form-group">
-							<label htmlFor="exampleInputEmail1">Título</label>
+							<label >Título</label>
 							<input 
 								className="form-control" 
 								placeholder="Informe o título"
 								name="titulo"
 								id="titulo"
-								onChange={handleInputChange} />
+								onChange={handleInputChange}
+								value={formData.titulo} />
 						</div>
 						<div className="form-group">
-							<label htmlFor="Subtítulo">Subtítulo</label>
+							<label >Subtítulo</label>
 							<input 
 								className="form-control" 
 								placeholder="Descreve o subtítulo" 
 								name="subtitulo"
 								id="subtitulo"
-								onChange={handleInputChange}/>
+								onChange={handleInputChange}
+								value={formData.subtitulo} />
 						</div>
+						
 						<div className="form-group">
-							<label htmlFor="descricao">Descrição</label>
+							<label >Descrição</label>
 							<input 
 								className="form-control" 
 								placeholder="Descrição" 
 								name="descricao"
 								id="descricao"
 								onChange={handleInputChange}
+								value={formData.descricao}
 							/>
 						</div>
-
 						<div className="form-group">
-							<label htmlFor="descricao">Slogan</label>
+							<label>Slogan</label>
 							<input 
 								className="form-control" 
 								placeholder="Slogan"
 								name="slogan"
 								id="slogan"
-								onChange={handleInputChange} />
+								onChange={handleInputChange} 
+								value={formData.slogan}/>
 						</div>
 
 						<div className="form-group">
-							<label htmlFor="descricao">Imagem 1</label>
-							<Dropzone  onFileUploaded={setSelectedFile1}/>
+							<label >Imagem 1</label>
+							<Dropzone  onFileUploaded={setSelectedFile1} fileFromUrl={img1}/>
 						</div>
 
 						<div className="form-group">
-							<label htmlFor="descricao">Imagem 2</label>
-							<Dropzone  onFileUploaded={setSelectedFile2}/>
+							<label >Imagem 2</label>
+							<Dropzone  onFileUploaded={setSelectedFile2} fileFromUrl={img2}/>
 						</div>
 
 						<div className="form-group">
-							<label htmlFor="descricao">Imagem 3</label>
-							<Dropzone  onFileUploaded={setSelectedFile3}/>
+							<label >Imagem 3</label>
+							<Dropzone  onFileUploaded={setSelectedFile3} fileFromUrl={img3}/>
 						</div>
 						
 					</div>

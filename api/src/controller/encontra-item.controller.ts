@@ -1,8 +1,8 @@
-const BannerModel = require ('../db/models/banner.model')
+const EncontraItemModel = require ('../db/models/encontra-item.model')
 import GenericService from '../service/generic.service'
-class BannerController {
+class EncontraController {
     
-    _model = BannerModel
+    _model = EncontraItemModel
     _genericService: any = new GenericService( this._model )
     
     constructor(){}
@@ -24,9 +24,9 @@ class BannerController {
     }
 
     delete( id: any ){
-        return this._genericService.destroy( id )
+        return this._genericService.delete( id )
     }
 
 }
 
-export default new BannerController()
+export default new EncontraController()

@@ -16,7 +16,7 @@ export default class Menu extends Component {
                         
                         <div className="nav_web-dealingsls">
                             <nav>
-                                <label for="drop" className="toggle">Menu</label>
+                                <label htmlFor="drop" className="toggle">Menu</label>
                                 <input type="checkbox" id="drop" />
                                 <ul className="menu">
                                     <li ><NavLink to="/" activeClassName="active">Início</NavLink></li>
