@@ -1,24 +1,16 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
-import blog1 from '../../../assets/introducing/images/blog1.jpg'
-import blog2 from '../../../assets/introducing/images/blog2.jpg'
-import blog3 from '../../../assets/introducing/images/blog3.jpg'
 
-import s1 from '../../../assets/introducing/images/s1.png'
-import s2 from '../../../assets/introducing/images/s2.png'
-import s3 from '../../../assets/introducing/images/s3.png'
-import s4 from '../../../assets/introducing/images/s4.png'
 import img from '../../../assets/introducing/images/img.png'
 
-import img1 from '../../../assets/introducing/images/1.jpg'
-import img2 from '../../../assets/introducing/images/2.jpg'
-import img3 from '../../../assets/introducing/images/3.jpg'
+
 import './style.css'
 
 import socketIOClient from "socket.io-client";
 import api from '../../../services/api'
-const ENDPOINT = "http://localhost:3001";
+import env from '../../../environments'
+
 
 const Home = () =>{
     const [response, setResponse] = useState(
@@ -31,9 +23,8 @@ const Home = () =>{
 
 
     useEffect(() => {
-        const socket = socketIOClient(ENDPOINT);
+        const socket = socketIOClient(env.host);
         socket.on("change", data => {
-            console.log('change',data);
             buscarDados()  
           
         });
@@ -44,10 +35,8 @@ const Home = () =>{
       },[])
 
       function buscarDados(){
-        console.log('buscarDados');
         api.get('/home')
            .then( resp => {
-               console.log(resp.data);
                setResponse(resp.data)
            })  
         

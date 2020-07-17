@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Dropzone from './dropzone'
 import api from '../../../services/api'
+import env from '../../../environments'
 
 const Banner = () => {
 	const [ selectedFile1, setSelectedFile1 ] = useState()
@@ -22,16 +23,16 @@ const Banner = () => {
 			   
 			   setFormData( response.data )
 			   if( response.data.imagem1 != null ){
-				   let string = `http://localhost:3001/foto/${response.data.imagem1}`
+				   let string = `${env.host}/foto/${response.data.imagem1}`
 				   setImg1( string )
 			   }
 			   if( response.data.imagem2 != null ){
-					let string = `http://localhost:3001/foto/${response.data.imagem2}`
+					let string = `${env.host}/foto/${response.data.imagem2}`
 					setImg2( string )
 				}
 
 				if( response.data.imagem3 != null ){
-					let string = `http://localhost:3001/foto/${response.data.imagem3}`
+					let string = `${env.host}/foto/${response.data.imagem3}`
 					setImg3( string )
 				}
 		   })

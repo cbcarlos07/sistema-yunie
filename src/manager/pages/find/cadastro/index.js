@@ -4,6 +4,7 @@ import api from '../../../../services/api'
 import Dropzone from '../../banner/dropzone'
 import './styles.css'
 import { useHistory } from 'react-router-dom'
+import env from '../../../../environments'
 
 const ItemEncontra = ({ match, location }) => {
 	const [ selectedFile1, setSelectedFile1 ] = useState()
@@ -28,7 +29,7 @@ const ItemEncontra = ({ match, location }) => {
                    
                    setFormData( response.data )
                    if( response.data.imagem != null ){
-                       let string = `http://localhost:3001/foto/${response.data.imagem}`
+                       let string = `${env.host}/foto/${response.data.imagem}`
                        setImg1( string )
                    }
                    
