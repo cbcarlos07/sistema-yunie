@@ -1,82 +1,103 @@
-import * as restifyRouter from 'restify-router'
-import servicosController from '../controller/servicos.controller'
-import servicosItemController from '../controller/servicos-item.controller'
-import env from '../environments/environments'
-const Router = restifyRouter.Router
-const servicosRoute = new Router()
+import env from "../environments/environments"
+import servicosController from "../controller/servicos.controller"
+import uploads from "../utils/upload"
+import * as fs from 'fs'
+import servicosItemController from "../controller/servicos-item.controller"
+const prefix = `${env.prefix}/servicos`
 
-var io: any
-const servicosRealtime = socket => {
-    io = socket
+const servicosRoute = deps => {
+    const {server, io} = deps
+    server.post( prefix, uploads.single('imagem'), async (req, res, next) =>{
+        
+        let body = req.body        
+        if( req.file != undefined )
+            body.imagem = req.file.filename
+
+        try {
+            let insert = await servicosController.create( body )
+          //  console.log('insert', insert);
+            
+            res.send( {status: true} )
+        } catch (error) {
+            res.send( error )
+        }
+        next()
+    })
+
+    server.put( `${prefix}/:id`,uploads.single('imagem'), async (req, res, next) =>{
+        const {id} = req.params
+        
+        const {titulo, subtitulo, descricao} = req.body       
+        const body: any  = {
+            titulo,
+            subtitulo,
+            descricao
+        }                                
+        
+        
+
+        let alterar  = await servicosController.findByPk( id )
+    
+    
+
+        if( req.file != undefined ){
+            body.imagem = req.file.filename
+            if( alterar.dataValues.imagem != null )  fs.unlinkSync( `./public/${alterar.dataValues.imagem}` ) 
+        }    
+          
+
+
+        try {
+            let update = await servicosController.update( id, body )
+            console.log('update', update);
+            
+            io.emit('change',{status: true})
+            res.send( {status: true} )
+        } catch (error) {
+            console.log('error alterar', error);
+            
+            res.send( error )
+        }
+        next()
+    })
+
+    server.del( `${prefix}/:id`, async (req, res, next) =>{
+        const {id} = req.params
+        
+        try {
+            res.send( await servicosController.delete( id ) )
+        } catch (error) {
+            res.send( error )
+        }
+        next()
+    })
+
+    server.get( prefix, async (req, res, next) =>{
+        
+        try {
+            res.send( await servicosController.findAll(  ) )
+        } catch (error) {
+            res.send( error )
+        }
+        next()
+    })
+
+    server.get( `${prefix}/:id`, async (req, res, next) =>{
+        const {id} = req.params
+        try {
+            let dados = await servicosController.findByPk( id )
+            let items = await servicosItemController.findAll()
+            let item = items.map( e => {
+                e.imagem = `http://${env.IPLOCAL}:${env.SERVER_PORT}/foto/${e.imagem}`
+                return e
+            })
+            let obj = {...dados.dataValues, item}
+            res.send( obj )
+        } catch (error) {
+            res.send( error )
+        }
+        next()
+    })
 }
 
-servicosRoute.post('', async (req, res, next)=>{
-    
-    try {
-        let insert = await servicosController.create( req.body )
-        res.json({status: true})
-    } catch (error) {
-        res.json( error )
-    }
-    next()
-})
-
-servicosRoute.put('/:id', async (req, res, next)=>{
-    const {id} = req.params
-    delete req.body.item
-    console.log('body', req.body);
-    
-    try {
-        let update = await servicosController.update( id, req.body )
-        
-        
-        io.emit('change',{status: true} )
-        res.json({status: true})
-    } catch (error) {
-        console.log(error)
-        res.json( error )
-    }
-    next()
-})
-
-servicosRoute.get('/', async (req, res, next)=>{
-    
-    try {
-        
-        res.json( await servicosController.findAll( ) )
-    } catch (error) {
-        res.json( error )
-    }
-    next()
-})
-
-servicosRoute.get('/:id', async (req, res, next)=>{
-    const {id} = req.params
-    try {      
-        let servicos = await servicosController.findByPk( id )
-        let items = await servicosItemController.findAll()
-        let item = items.map( e => {
-            e.imagem = e.imagem != null ?  `http://${env.IPLOCAL}:${env.SERVER_PORT}/foto/${e.imagem}` : ''
-            return e
-        } )
-        let obj = {...servicos.dataValues, item}
-        res.json( obj )
-        
-    } catch (error) {
-        res.json( error )
-    }
-    next()
-})
-
-
-servicosRoute.del('/:id', async (req, res, next)=>{
-    const {id} = req.params
-    try {      
-        res.json( await servicosController.delete( id ) )
-    } catch (error) {
-        res.json( error )
-    }
-    next()
-})
-
-export { servicosRoute , servicosRealtime}
+export default servicosRoute

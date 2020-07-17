@@ -119,7 +119,7 @@ const ItemEncontra = ({ match, location }) => {
 						
 
 						<div className="form-group">
-							<label >Imagem </label>
+							<label >Imagem (640x426)</label>
 							<Dropzone  onFileUploaded={setSelectedFile1} fileFromUrl={img1}/>
 						</div>
 

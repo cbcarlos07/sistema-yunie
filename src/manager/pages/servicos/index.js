@@ -2,24 +2,31 @@ import React, { useState, useEffect } from 'react'
 import api from '../../../services/api'
 import env from '../../../environments'
 import { Link } from 'react-router-dom'
-import { FiCheck } from 'react-icons/fi'
+import Dropzone from '../banner/dropzone'
 
 const Services =  () => {
-    const [servicos, setServicos] = useState({
+    
+    const [ img, setImg ] = useState('')
+    const [formData, setFormData] = useState({
         titulo: '',
         subtitulo: '',
-        descricao: '',
+        descricao: '',        
         item: []
     })
+    const [ selectedFile, setSelectedFile ] = useState()
     const [test, setTest] = useState(0)
 
     useEffect(()=>{
-        if( test < 1 ){
-            console.log('test', test);
+        if( test < 1 ){            
             setTest(1)
             api.get(`${env.endpoint}/servicos/1`)
             .then( response => {
-                 setServicos( response.data )
+                setFormData( response.data )
+                if( response.data.imagem != null ){
+                    let string = `http://localhost:3001/foto/${response.data.imagem}`
+                    setImg( string )
+                }
+                 
             }) 
         }
     },[test])
@@ -28,12 +35,21 @@ const Services =  () => {
 
     function handleInputChange(event){
         const { name, value } = event.target
-        setServicos({...servicos, [name]: value})
+        setFormData({...formData, [name]: value})
 	}
 
     async function handleSubmit(e){
         e.preventDefault()
-        await api.put(`${env.endpoint}/servicos/1`, servicos)
+        const {titulo, subtitulo, descricao} = formData
+
+        const data = new FormData()        
+        data.append('titulo', titulo)
+        data.append('subtitulo', subtitulo)
+		data.append('descricao', descricao)
+		if( selectedFile ){
+            data.append('imagem', selectedFile)
+		}
+        await api.put(`${env.endpoint}/servicos/1`, data)
 
         alert('Salvo com sucesso')
     }
@@ -62,7 +78,7 @@ const Services =  () => {
                                         className="form-control" 
                                         placeholder="Título"
                                         name="titulo"
-                                        value={servicos.titulo}
+                                        value={formData.titulo}
                                         onChange={handleInputChange}
                                         />
                                 </div>
@@ -76,7 +92,7 @@ const Services =  () => {
                                            className="form-control" 
                                            placeholder="Sub Título"
                                            name="subtitulo"
-                                           value={servicos.subtitulo}
+                                           value={formData.subtitulo}
                                            onChange={handleInputChange}
                                            />
                                 </div>
@@ -89,12 +105,23 @@ const Services =  () => {
                                     <input 
                                       className="form-control" 
                                       placeholder="Descrição"
-                                      value={servicos.descricao}
+                                      value={formData.descricao}
                                       onChange={handleInputChange}
                                       name="descricao"
                                       />
                                 </div>
                             </div>
+                            <div className="row">
+                                    <div className="col-xs-3">
+                                        <label >Imagem (593x432)</label>
+                                    </div>
+                                    <Dropzone  className="col-xs-9"
+                                            onFileUploaded={setSelectedFile} 
+                                            fileFromUrl={img} 
+                                            
+                                    />
+                                    
+                                </div>
                             <div className="row">
                                 <div className="col-xs-6">
                                     <button className="btn btn-primary" type="submit">Salvar</button>                                    
@@ -116,24 +143,24 @@ const Services =  () => {
                                 </tr>
                             </thead>
                             <tbody>
-                           {
-                               servicos.item.map(item => (
-                                   <tr key={item.id}>
-                                       <td>{item.titulo}</td>
-                                       <td>{item.descricao}</td>
+                            {
+                                formData.item.map(item => (
+                                    <tr key={item.id}>
+                                        <td>{item.titulo}</td>
+                                        <td>{item.descricao}</td>
                                         <td>{
-                                              item.imagem != '' ?
-                                               <img src={item.imagem} width={30} />
-                                               : '' 
+                                            item.imagem != '' ?
+                                                <img src={item.imagem} width={30} />
+                                                : '' 
                                             }
                                         </td>
                                         <td>
                                             <Link to={`/servicos/editar/${item.id}`} className="btn btn-xs btn-success">Editar</Link>
                                             
                                         </td>
-                                   </tr>    
-                               ))
-                           }
+                                    </tr>    
+                                ))
+                            }
                             </tbody>
                         </table>
                     <div className="box-footer"></div>

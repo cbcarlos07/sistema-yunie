@@ -119,17 +119,17 @@ const Banner = () => {
 						</div>
 
 						<div className="form-group">
-							<label >Imagem 1</label>
+							<label >Imagem 1 (1280x853)</label>
 							<Dropzone  onFileUploaded={setSelectedFile1} fileFromUrl={img1}/>
 						</div>
 
 						<div className="form-group">
-							<label >Imagem 2</label>
+							<label >Imagem (1280x853)</label>
 							<Dropzone  onFileUploaded={setSelectedFile2} fileFromUrl={img2}/>
 						</div>
 
 						<div className="form-group">
-							<label >Imagem 3</label>
+							<label >Imagem (1280x853)</label>
 							<Dropzone  onFileUploaded={setSelectedFile3} fileFromUrl={img3}/>
 						</div>
 						

@@ -7,7 +7,8 @@ class ServicosModel extends Model {
         super.init({
             titulo:    DataTypes.STRING,
             subtitulo: DataTypes.STRING,
-            descricao: DataTypes.STRING
+            descricao: DataTypes.STRING,
+            imagem:    DataTypes.STRING
         },{
             tableName: 'site_servicos',
             sequelize

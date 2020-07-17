@@ -18,6 +18,7 @@ class GenericService{
     }
 
     update( id: any,  obj: any ){
+        
         return this.model.update( obj, {where: {id}} )
     }
 
