@@ -23,7 +23,7 @@ const Services =  () => {
             .then( response => {
                 setFormData( response.data )
                 if( response.data.imagem != null ){
-                    let string = `http://localhost:3001/foto/${response.data.imagem}`
+                    let string = `${response.data.imagem}`
                     setImg( string )
                 }
                  

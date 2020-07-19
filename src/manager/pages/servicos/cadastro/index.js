@@ -27,7 +27,7 @@ const ItemServicos = ({ match, location }) => {
                    
                    setFormData( response.data )
                    if( response.data.imagem != null ){
-                       let string = `${env.host}/foto/${response.data.imagem}`
+                       let string = `${response.data.imagem}`
                        setImg1( string )
                    }
                    
