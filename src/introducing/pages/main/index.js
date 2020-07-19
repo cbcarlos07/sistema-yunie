@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-
-
-import img from '../../../assets/introducing/images/img.png'
-
-
 import './style.css'
 
 import socketIOClient from "socket.io-client";
@@ -17,9 +12,9 @@ const Home = () =>{
             {
                 banner: {}, 
                 encontra: {titulo: '', subtitulo: '', descricao: '', items: []},
-                servicos: {titulo: '', subtitulo: '', descricao: '', itemsServices: [{},{},{},{}]}
+                servicos: {titulo: '', subtitulo: '', descricao: '', items: [{},{},{},{}]}
             });
-    const [items, setItems] = useState([{}])        
+    
 
 
     useEffect(() => {
@@ -74,9 +69,9 @@ const Home = () =>{
                                 <input type="radio" name="slides" checked="checked" id="slides_1" onChange={() => {}}/>
                                 <input type="radio" name="slides" id="slides_2" />
                                 <input type="radio" name="slides" id="slides_3" />
-                                <ul className="banner_slide_bg">
+                                <ul className="banner_slide_bg ">
                                     <li>
-                                        <div className="banner-top1">
+                                        <div className="banner-top1 ">
                                             <img src={response.banner.imagem1} className="banner-1"/>
                                         </div>
                                     </li>
@@ -160,11 +155,11 @@ const Home = () =>{
 							<div className="col-lg-5 w3pvt-lauits_banner_bottom_left">
 								<div className="row">
 									<div className="col-8 wthree_banner_bottom_grid_right text-right">
-										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[0].titulo}</a></h4>
-										<p>{response.servicos.itemsServices[0].descricao}</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.items[0].titulo}</a></h4>
+										<p>{response.servicos.items[0].descricao}</p>
 									</div>
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
-										<img src={response.servicos.itemsServices[0].imagem} alt="" className="img-fluid" />
+										<img src={response.servicos.items[0].imagem} alt="" className="img-fluid" />
 									</div>
 								</div>
 							</div>
@@ -174,11 +169,11 @@ const Home = () =>{
 							<div className="col-lg-5 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
 								<div className="row">
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center">
-										<img src={response.servicos.itemsServices[1].imagem} alt="" className="img-fluid" />
+										<img src={response.servicos.items[1].imagem} alt="" className="img-fluid" />
 									</div>
 									<div className="col-8 wthree_banner_bottom_grid_right">
-										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[1].titulo}</a></h4>
-										<p>{response.servicos.itemsServices[1].descricao}</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.items[1].titulo}</a></h4>
+										<p>{response.servicos.items[1].descricao}</p>
 									</div>
 								</div>
 							</div>
@@ -187,11 +182,11 @@ const Home = () =>{
 							<div className="col-lg-4 w3pvt-lauits_banner_bottom_left">
 								<div className="row">
 									<div className="col-8 wthree_banner_bottom_grid_right text-right pl-lg-0">
-										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[2].titulo}</a></h4>
-										<p>{response.servicos.itemsServices[2].descricao}</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.items[2].titulo}</a></h4>
+										<p>{response.servicos.items[2].descricao}</p>
 									</div>
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pr-lg-0">
-										<img src={response.servicos.itemsServices[2].imagem} alt="" className="img-fluid" />
+										<img src={response.servicos.items[2].imagem} alt="" className="img-fluid" />
 									</div>
 								</div>
 							</div>
@@ -201,18 +196,18 @@ const Home = () =>{
 							<div className="col-lg-4 w3pvt-lauits_banner_bottom_left mt-lg-0 mt-4">
 								<div className="row">
 									<div className="col-4 wthree_banner_bottom_grid_left text-lg-right text-center pl-lg-0">
-										<img src={response.servicos.itemsServices[3].imagem} alt="" className="img-fluid" />
+										<img src={response.servicos.items[3].imagem} alt="" className="img-fluid" />
 									</div>
 									<div className="col-8 wthree_banner_bottom_grid_right pr-lg-0">
-										<h4 className="mb-3"><a href="login.html">{response.servicos.itemsServices[3].titulo}</a></h4>
-										<p>{response.servicos.itemsServices[2].descricao}</p>
+										<h4 className="mb-3"><a href="login.html">{response.servicos.items[3].titulo}</a></h4>
+										<p>{response.servicos.items[2].descricao}</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="img-blog-2">
-						<img src={img} alt="" className="img-fluid" />
+						<img src={response.servicos.imagem} alt="" className="img-fluid" />
 					</div>
 				</section>
 

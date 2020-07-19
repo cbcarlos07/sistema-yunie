@@ -1,11 +1,8 @@
 import React from 'react'
 import Locate from '../../components/Locate'
-
+import inner_bg from '../../../assets/introducing/images/inner-bg.jpg'
 const Register = () => (
 	<>
-	<div className="main-banner-2">
-	
-	</div>
 	
 	<Locate locate="Cadastro"/>
 
@@ -13,10 +10,10 @@ const Register = () => (
 		<div className="container py-xl-5 py-3">
 			<div className="login-body">
 				<div className="login p-4 mx-auto">
-					<h5 className="text-center mb-4">Register Now</h5>
+					<h5 className="text-center mb-4">Cadastre conosco</h5>
 					<form action="#" method="post">
 						<div className="form-group">
-							<label>Seu Name</label>
+							<label>Seu Nome</label>
 							<input type="text" className="form-control" name="name" placeholder="" required="" />
 						</div>
 						<div className="form-group">
@@ -24,11 +21,6 @@ const Register = () => (
 							<input type="email" className="form-control" name="email" placeholder="" required="" />
 						</div>
 
-						<div className="form-group">
-							<label>Email</label>
-							<input type="email" className="form-control" name="email" placeholder="" required="" />
-						</div>
-						
 						<div className="row">
 							<div className="col-lg-6 form-group pr-lg-2">
 								
@@ -37,21 +29,21 @@ const Register = () => (
 								
 							</div>
 
-							<div className="col-lg-6 form-group pr-lg-2">
+							
+							 
+						</div>
+						<div className="col-lg-6 form-group pr-lg-2">
 								
 									<label>Quadra/Bloco/Torre</label>
 									<input className="form-control" name="email" placeholder="Número" required="" />
 								
 							</div>
-							 
-						</div>
-						
 
 						
 
-						<button type="submit" className="btn submit mb-4">Register</button>
+						<button type="submit" className="btn submit mb-4">Registre-se</button>
 						<p className="text-center">
-							<a href="#" className="text-da">By clicking Register, I agree to your terms</a>
+							<a href="#" className="text-da">Ao registrar-se em nosso sistema, você aceita nossos termos de uso</a>
 						</p>
 					</form>
 				</div>

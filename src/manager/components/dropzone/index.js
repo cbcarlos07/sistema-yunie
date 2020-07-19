@@ -10,7 +10,8 @@ const Dropzone = ( {onFileUploaded, fileFromUrl} ) =>{
     useEffect(()=>{    
         
         if (fileFromUrl !== undefined) {
-            setSelectedFileUrl(fileFromUrl);
+            if( !fileFromUrl.includes('null') )
+                setSelectedFileUrl(fileFromUrl);
         }    
         //setSelectedFileUrl( `${fileFromUrl}` )
     },[fileFromUrl])

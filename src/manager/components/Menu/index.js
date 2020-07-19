@@ -23,6 +23,8 @@ const Menu = props => {
                         <li className={location.pathname == '/banner' ? 'active' : '' }><NavLink to="/banner" ><i className="fa fa-circle-o"></i> Banner</NavLink></li>
                         <li className={location.pathname == '/encontra' ? 'active' : '' }><NavLink to="/encontra" ><i className="fa fa-circle-o"></i>Vocẽ encontra</NavLink></li>
                         <li className={location.pathname == '/servicos' ? 'active' : '' }><NavLink to="/servicos" ><i className="fa fa-circle-o"></i>Serviços</NavLink></li>
+                        <li className={location.pathname == '/contato' ? 'active' : '' }><NavLink to="/contato" ><i className="fa fa-circle-o"></i>Contato</NavLink></li>
+                        <li className={location.pathname == '/sobre' ? 'active' : '' }><NavLink to="/sobre" ><i className="fa fa-circle-o"></i>Sobre Nós</NavLink></li>
                     </ul>
                 </li>
             </ul>	

@@ -80,32 +80,7 @@ const Footer = () => (
 						</li>
 					</ul>
                 </div>
-                <div className="col-lg-4 footer-grid_section_1its">
-					<div className="footer-title">
-						<h3>Request Info</h3>
-					</div>
-					<div className="info-form-right mt-4 p-0">
-						<form action="#" method="post">
-							<div className="row">
-								<div className="col-lg-6 form-group mb-2 pr-lg-1">
-									<input type="text" className="form-control" name="Name" placeholder="Name" required=""/>
-								</div>
-								<div className="col-lg-6 form-group mb-2 pl-lg-1">
-									<input type="text" className="form-control" name="Phone" placeholder="Phone"
-										required="" />
-								</div>
-							</div>
-							<div className="form-group mb-2">
-								<input type="email" className="form-control" name="Email" placeholder="Email" required="" />
-							</div>
-							<div className="form-group mb-2">
-								<textarea name="Comment" className="form-control" placeholder="Comment"
-									required=""></textarea>
-							</div>
-							<button type="submit" className="btn submit-contact ml-auto">Submit</button>
-						</form>
-					</div>
-				</div>
+	
             </div>
         </div>
 	</footer>

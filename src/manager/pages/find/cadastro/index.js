@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import api from '../../../../services/api'
-import Dropzone from '../../banner/dropzone'
+import Dropzone from '../../../components/dropzone'
 import './styles.css'
 import { useHistory } from 'react-router-dom'
-import env from '../../../../environments'
+
 
 const ItemEncontra = ({ match, location }) => {
 	const [ selectedFile1, setSelectedFile1 ] = useState()

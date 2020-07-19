@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import api from '../../../services/api'
 import env from '../../../environments'
 import { Link } from 'react-router-dom'
-import Dropzone from '../banner/dropzone'
+import Dropzone from '../../components/dropzone'
 
 const Services =  () => {
     

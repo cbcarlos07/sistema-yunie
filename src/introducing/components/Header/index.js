@@ -41,21 +41,7 @@ const Header = () => (
 											<span className="fa fa-facebook-f"></span>
 										</a>
 									</li>
-									<li className="twitter-w3">
-										<a href="#twitter">
-											<span className="fa fa-twitter"></span>
-										</a>
-									</li>
-									<li className="google-w3">
-										<a href="#google">
-											<span className="fa fa-google-plus"></span>
-										</a>
-									</li>
-									<li className="dribble-w3">
-										<a href="#dribble">
-											<span className="fa fa-dribbble"></span>
-										</a>
-									</li>
+									
 								</ul>
 								
 							</div>
