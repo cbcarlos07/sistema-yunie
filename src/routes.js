@@ -16,6 +16,8 @@ import FindCadastro from './manager/pages/find/cadastro'
 import ServicesCadastro from './manager/pages/servicos/cadastro'
 import Contato from './manager/pages/contato';
 import SobreNos from './manager/pages/sobre-nos';
+import Cabecalho from './manager/pages/cabecalho';
+import CabecalhoCadastro from './manager/pages/cabecalho/cadastro';
 
 
 const  Routes = () => (
@@ -26,6 +28,7 @@ const  Routes = () => (
 				<IntroLayoutRoute path="/register" component={Register} />
 				<IntroLayoutRoute path="/contact" component={Contact} />
 				<IntroLayoutRoute path="/login" component={Login} />
+				
                 <ManagerLayoutRoute path="/banner" component={Home}/>
 				<ManagerLayoutRoute exact path="/encontra" component={Find}/>
 				<ManagerLayoutRoute path="/encontra/cadastro" component={FindCadastro}/>
@@ -35,6 +38,9 @@ const  Routes = () => (
 				<ManagerLayoutRoute exact path="/servicos/editar/:id" component={ServicesCadastro}/>
 				<ManagerLayoutRoute path="/contato" component={Contato}/>
 				<ManagerLayoutRoute path="/sobre" component={SobreNos}/>
+				<ManagerLayoutRoute exact path="/cabecalho" component={Cabecalho}/>
+				<ManagerLayoutRoute exact path="/cabecalho/cadastro" component={CabecalhoCadastro}/>
+				<ManagerLayoutRoute exact path="/cabecalho/editar/:id" component={CabecalhoCadastro}/>
 				
 			</Switch>
             

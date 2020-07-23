@@ -15,7 +15,6 @@ const Find =  () => {
 
     useEffect(()=>{
         if( test < 1 ){
-            console.log('test', test);
             setTest(1)
             api.get(`${env.endpoint}/encontra/1`)
             .then( response => {

@@ -130,13 +130,22 @@ a.move-top span {
     font-size: 16px;
 }
 
-.top-right-info li.facebook-w3 a {
+.top-right-info li.facebook a {
     background: #3b5998;
 }
 
-.top-right-info li.twitter-w3 a {
+.top-right-info li.twitter a {
     background: #1da1f2;
 }
+
+.top-right-info li.instagram a {
+    background: #E1306C;
+}
+
+.top-right-info li.youtube-play a {
+    background: #c4302b;
+}
+
 
 .top-right-info li.google-w3 a {
     background: #F44336;
