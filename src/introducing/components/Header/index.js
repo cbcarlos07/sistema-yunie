@@ -68,9 +68,9 @@ const Header = () => {
 										{
 											response.cabecalho.map( item => (
 												<li className={item.logo} key={item.id}>
-													<Link to={item.url}>
+													<a href={item.url}>
 														<span className={`fa fa-${item.logo}`}></span>
-													</Link>
+													</a>
 												</li>
 											) )
 										}
