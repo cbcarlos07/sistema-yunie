@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import logo from '../../../assets/introducing/images/logo.png'
 import pay2 from '../../../assets/introducing/images/pay2.png'
@@ -6,8 +6,41 @@ import pay5 from '../../../assets/introducing/images/pay5.png'
 import pay1 from '../../../assets/introducing/images/pay1.png'
 import pay4 from '../../../assets/introducing/images/pay4.png'
 
+import socketIOClient from "socket.io-client";
+import api from '../../../services/api';
+import env from '../../../environments';
+const Footer = () => {
+	const [response, setResponse] = useState({
+		logo: {}, 
+		contato: {}, 
+		redes: []
+	})
+	const [paragraph, setParagraph] = useState()
+	useEffect(() => {
+        const socket = socketIOClient(env.host);
+        socket.on("logo", data => {
+            buscarDados()  
+		});
+		socket.on("contato", data => {
+            buscarDados()  
+        });
+	  }, []);
 
-const Footer = () => (
+	useEffect(()=>{
+		buscarDados()
+	},[])  
+	  
+	function buscarDados(){
+		api.get(`/footer`)
+		   .then( resp => {
+			let newText = resp.data.logo.descricao.replace(/<br\s*[\/]?>/gi, "\n");
+			setParagraph( newText )
+			setResponse( resp.data )
+		   })
+	}
+
+
+	return (
 	<>
     <footer className="py-5">
 		<div className="container py-xl-4">
@@ -15,40 +48,26 @@ const Footer = () => (
                 <div className="col-lg-4 footer-grid_section_1its footer-text">
                     <h2>
                         <a className="logo text-wh" href="index.html">
-                            <img src={logo} alt="" className="img-fluid" /><span></span> Yunie
+                            <img src={response.logo.imagem} alt="" className="img-fluid" /><span></span> {response.logo.titulo}
                         </a>
                     </h2>
 
-                    <p className="mt-lg-4 mt-3 mb-lg-5 mb-4">Sed ut perspiciatis unde omnis iste natus errorhjhsit lupt
-						atem
-						accursit lupt atem accu
-						dfdsa
-						ntium doloremque laudan tium accu santium dolore.</p>
+						<p className="mt-lg-4 mt-3 mb-lg-5 mb-4">{paragraph}</p>
 
                         <ul className="top-right-info">
 						<li>
-							<p>Follow As:</p>
+							<p>Siga-nos:</p>
 						</li>
-						<li className="facebook-w3">
-							<a href="#facebbok">
-								<span className="fa fa-facebook-f"></span>
-							</a>
-						</li>
-						<li className="twitter-w3">
-							<a href="#twitter">
-								<span className="fa fa-twitter"></span>
-							</a>
-						</li>
-						<li className="google-w3">
-							<a href="#google">
-								<span className="fa fa-google-plus"></span>
-							</a>
-						</li>
-						<li className="dribble-w3">
-							<a href="#dribble">
-								<span className="fa fa-dribbble"></span>
-							</a>
-						</li>
+						{
+							response.redes.map( rede => (
+								<li className={rede.logo} key={rede.id}>
+									<a href={rede.url}>
+										<span className={`fa fa-${rede.logo}`}></span>
+									</a>
+								</li>
+							))
+						}
+						
 					</ul>
 
 
@@ -58,9 +77,9 @@ const Footer = () => (
 						<h3>Entre em contato</h3>
 					</div>
                     <div className="footer-text mt-4">
-						<p>Local: Manaus, Amazonas, Brasil</p>
-						<p className="my-2">Telefone: +55 (92) 9 8250-2212</p>
-						<p>Email : <a href="mailto:atendimento@yunie.com">E-mail: atendimento@yunie.com</a></p>
+						<p>Local:  {response.contato.cidade} </p>
+						<p className="my-2">Telefone: {response.contato.telefone}</p>
+						<p>Email : <a href={`mailto:${response.contato.email}`}>{response.contato.email}</a></p>
 					</div>
                     <div className="footer-title mt-4 pt-md-2">
 						<h3>Formas de pagamento</h3>
@@ -86,7 +105,7 @@ const Footer = () => (
 	</footer>
 
 	<div className="cpy-right text-center py-3">
-		<p>© 2019 Tasty Burger. All rights reserved | Design by
+		<p>© 2020 Yunie. Todos os direitos reservados | Design by
 			<a href="http://w3layouts.com"> W3layouts.</a>
 		</p>
 	</div>
@@ -97,7 +116,9 @@ const Footer = () => (
 	</>
 
       
-)
+   )
+
+}
 
 
 export default Footer

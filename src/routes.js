@@ -1,6 +1,6 @@
 import React from 'react'
 
-
+import './styles.css'
 import IntroLayoutRoute from './introducing';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Main from './introducing/pages/main';
@@ -18,8 +18,9 @@ import Contato from './manager/pages/contato';
 import SobreNos from './manager/pages/sobre-nos';
 import Cabecalho from './manager/pages/cabecalho';
 import CabecalhoCadastro from './manager/pages/cabecalho/cadastro';
-
-
+import Logo from './manager/pages/logo';
+import CartaoCredito from './manager/pages/cartao-credito';
+import CartaoCreditoCadastro from './manager/pages/cartao-credito/cadastro';
 const  Routes = () => (
     <BrowserRouter>
 			<Switch>
@@ -41,6 +42,9 @@ const  Routes = () => (
 				<ManagerLayoutRoute exact path="/cabecalho" component={Cabecalho}/>
 				<ManagerLayoutRoute exact path="/cabecalho/cadastro" component={CabecalhoCadastro}/>
 				<ManagerLayoutRoute exact path="/cabecalho/editar/:id" component={CabecalhoCadastro}/>
+				<ManagerLayoutRoute exact path="/logo" component={Logo}/>
+				<ManagerLayoutRoute exact path="/cartao-credito" component={CartaoCredito}/>
+				<ManagerLayoutRoute exact path="/cartao-credito/cadastro" component={CartaoCreditoCadastro}/>
 				
 			</Switch>
             
