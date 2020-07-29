@@ -50,7 +50,7 @@ const Home = () =>{
                                     <div className="banner-info_agile_w3ls">
                                     
                                         <h5>{response.banner.titulo}</h5>
-                                        <h3 className="text-da mb-4 compras">{response.banner.subtitulo} <br /><span>{response.banner.descricao}</span> </h3>
+                                        <h3 className="text-da mb-4 col-xs-12 compras">{response.banner.subtitulo} <br /><span>{response.banner.descricao}</span> </h3>
                                         <p>{response.banner.slogan}</p>
                                        
                                         <div className="input-wrapper">
