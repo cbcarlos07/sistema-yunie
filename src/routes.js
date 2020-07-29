@@ -45,6 +45,7 @@ const  Routes = () => (
 				<ManagerLayoutRoute exact path="/logo" component={Logo}/>
 				<ManagerLayoutRoute exact path="/cartao-credito" component={CartaoCredito}/>
 				<ManagerLayoutRoute exact path="/cartao-credito/cadastro" component={CartaoCreditoCadastro}/>
+				<ManagerLayoutRoute exact path="/cartao-credito/editar/:id" component={CartaoCreditoCadastro}/>
 				
 			</Switch>
             

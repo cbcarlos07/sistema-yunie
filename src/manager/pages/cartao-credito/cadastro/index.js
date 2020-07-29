@@ -3,23 +3,29 @@ import React, { useState, useEffect } from 'react'
 import api from '../../../../services/api'
 import './styles.css'
 import { useHistory } from 'react-router-dom'
-
+import Dropzone from '../../../components/dropzone'
 
 const CartaoCreditoCadastro = ({ match, location }) => {
 	const [formData, setFormData] = useState({
         descricao: '',
     })
-    const [logo, setLogo] = useState('')
-    const history = useHistory()
+    const [ selectedFile, setSelectedFile ] = useState()
+	const [ img, setImg ] = useState('')
+	const history = useHistory()
+	const [title, setTitle] = useState('')
     const id = match.params.id || 0
 
 	useEffect(()=>{
-        
+        setTitle('Cadastrar Cartão de Crédito')
         if( id != 0 ){
-
-            api.get(`/yunie/v1/header/${id}`)
+			setTitle('Alterar Cartão de Crédito')
+            api.get(`/yunie/v1/cartao-credito/${id}`)
                .then( response =>{
-                   setFormData( response.data )
+				setFormData( response.data )
+				if( response.data.imagem != null ){
+					let string = `${response.data.imagem}`
+					setImg( string )
+				}
                })
         }
 	},[])
@@ -32,19 +38,27 @@ const CartaoCreditoCadastro = ({ match, location }) => {
 	
 	async function handleSubmit(event) {
 		event.preventDefault()
+		const {descricao} = formData
 		
-        id == 0 ? await api.post('/yunie/v1/header',formData) : 
-                  await api.put(`/yunie/v1/header/${id}`,formData)
+        const data = new FormData()
+        if( id != 0 ) data.append('id', id)
+		data.append('descricao', descricao)
+		if( selectedFile ){
+            data.append('imagem', selectedFile)
+		}
+		
+        id == 0 ? await api.post('/yunie/v1/cartao-credito',data) : 
+                  await api.put(`/yunie/v1/cartao-credito/${id}`,data)
         
 		alert('Salvo com sucesso!')
-		history.push('/cabecalho')
+		history.push('/cartao-credito')
 	}
 
 	return (
 		<>	
 			<div className="box box-primary">
 				<div className="box-header with-border">
-					<h3 className="box-title">Você encontra nda Yunie</h3>
+				<h3 className="box-title">{title}</h3>
 				</div>
 				
 				<form role="form" onSubmit={handleSubmit}>
@@ -53,50 +67,18 @@ const CartaoCreditoCadastro = ({ match, location }) => {
 							<label >Descrição</label>
 							<input 
 								className="form-control" 
-								placeholder="Facebook, Instagram, Youtube-play"
+								placeholder="Descrição"
 								name="descricao"
 								id="descricao"
 								onChange={handleInputChange}
 								value={formData.descricao} />
 						</div>
+						
 						<div className="form-group">
-							<label >Logo:</label>
-                            <span className="redes"><i className={`fa ${logo}`}></i></span>
-							<input 
-								className="form-control" 
-								placeholder="Informe a logo" 
-								name="logo"
-                                id="logo"
-                                type="hidden"
-								onChange={handleInputChange}
-								value={logo}
-							/>
+							<label >Imagem 55x33</label>
+							<Dropzone  onFileUploaded={setSelectedFile} fileFromUrl={img}/>
 						</div>
-                        <div className="row">
-                            <div className="form-group col-md-6 col-xs-12">
-                                <label>URL</label>
-                                <input 
-                                    className="form-control" 
-                                    placeholder="Informe a URL"
-                                    name="url"
-                                    id="url"
-                                    onChange={handleInputChange} 
-                                    value={formData.url}/>
-                            </div>
-
-                            <div className="form-group col-md-6 col-xs-12 status">
-                                <strong>Ativo</strong> 
-                                <input 
-                                        type="checkbox"
-                                        name="status"
-                                        id="status"
-                                        checked={formData.status}
-                                        value="1"
-                                        onChange={handleInputChange} 
-                                        />
-                                 
-                            </div>
-                        </div>
+                        
 
 						
 						

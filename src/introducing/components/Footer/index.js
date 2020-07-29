@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import logo from '../../../assets/introducing/images/logo.png'
-import pay2 from '../../../assets/introducing/images/pay2.png'
-import pay5 from '../../../assets/introducing/images/pay5.png'
-import pay1 from '../../../assets/introducing/images/pay1.png'
-import pay4 from '../../../assets/introducing/images/pay4.png'
-
 import socketIOClient from "socket.io-client";
 import api from '../../../services/api';
 import env from '../../../environments';
@@ -13,7 +7,8 @@ const Footer = () => {
 	const [response, setResponse] = useState({
 		logo: {}, 
 		contato: {}, 
-		redes: []
+		redes: [],
+		credito: []
 	})
 	const [paragraph, setParagraph] = useState()
 	useEffect(() => {
@@ -22,6 +17,9 @@ const Footer = () => {
             buscarDados()  
 		});
 		socket.on("contato", data => {
+            buscarDados()  
+		});
+		socket.on("cartao", data => {
             buscarDados()  
         });
 	  }, []);
@@ -85,18 +83,14 @@ const Footer = () => {
 						<h3>Formas de pagamento</h3>
 					</div>
 					<ul className="list-unstyled payment-links mt-4">
-						<li>
-							<a href="login.html"><img src={pay2} alt="" /></a>
-						</li>
-						<li>
-							<a href="login.html"><img src={pay5} alt=""/></a>
-						</li>
-						<li>
-							<a href="login.html"><img src={pay1} alt=""/></a>
-						</li>
-						<li>
-							<a href="login.html"><img src={pay4} alt=""/></a>
-						</li>
+						{
+							response.credito.map( c => (
+								<li key={c.id}>
+									<a href="#"><img src={c.imagem} alt="" /></a>
+								</li>
+							))
+						}
+						
 					</ul>
                 </div>
 	

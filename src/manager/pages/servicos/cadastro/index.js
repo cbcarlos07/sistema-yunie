@@ -17,7 +17,6 @@ const ItemServicos = ({ match, location }) => {
     const id = match.params.id || 0
 
 	useEffect(()=>{
-        console.log('id', id);
         
         if( id != 0 ){
 

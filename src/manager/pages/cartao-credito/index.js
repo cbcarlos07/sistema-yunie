@@ -37,7 +37,7 @@ const CartaoCredito =  () => {
                         
                         <div className="row">
                             <div className="col-xs-6">
-                                Redes Sociais
+                                Cartão de Crédito
                             </div>
                             <div className="col-xs-6">
                                 <Link to="/cartao-credito/cadastro" className="btn btn-success pull-right" type="button"><i className="fa fa-plus"></i></Link>
@@ -49,7 +49,7 @@ const CartaoCredito =  () => {
                             <thead>
                                 <tr>
                                     <th>Descricao</th>
-                                    <th>Logo</th>
+                                    <th>Imagem</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -58,9 +58,9 @@ const CartaoCredito =  () => {
                                items.map(item => (
                                    <tr key={item.id}>
                                         <td>{item.descricao}</td>
-                                        <td><i className={`fa ${item.logo}`}></i></td>
+                                        <td><img src={item.imagem} /></td>
                                         <td>
-                                            <Link to={`/cabecalho/editar/${item.id}`} className="btn btn-xs btn-success">Editar</Link>
+                                            <Link to={`/cartao-credito/editar/${item.id}`} className="btn btn-xs btn-success">Editar</Link>
                                             <Link to={`#`} className="btn btn-xs btn-danger" onClick={() => perguntaRemover(item.id)}>Excluir</Link>
                                         </td>
                                    </tr>    
