@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Dropzone from '../../components/dropzone'
 import api from '../../../services/api'
-import env from '../../../environments'
+import './styles.css'
 
 const Banner = () => {
 	const [ selectedFile1, setSelectedFile1 ] = useState()
@@ -68,80 +68,83 @@ const Banner = () => {
 
 	return (
 		<>	
+		<div className="container">
 
-			<div className="box box-primary">
-				<div className="box-header with-border">
-					<h3 className="box-title">Tela Inicial</h3>
-				</div>
-				
-				<form role="form" onSubmit={handleSubmit}>
-					<div className="box-body">
-						<div className="form-group">
-							<label >Título</label>
-							<input 
-								className="form-control" 
-								placeholder="Informe o título"
-								name="titulo"
-								id="titulo"
-								onChange={handleInputChange}
-								value={formData.titulo} />
-						</div>
-						<div className="form-group">
-							<label >Subtítulo</label>
-							<input 
-								className="form-control" 
-								placeholder="Descreve o subtítulo" 
-								name="subtitulo"
-								id="subtitulo"
-								onChange={handleInputChange}
-								value={formData.subtitulo} />
-						</div>
-						
-						<div className="form-group">
-							<label >Descrição</label>
-							<input 
-								className="form-control" 
-								placeholder="Descrição" 
-								name="descricao"
-								id="descricao"
-								onChange={handleInputChange}
-								value={formData.descricao}
-							/>
-						</div>
-						<div className="form-group">
-							<label>Slogan</label>
-							<input 
-								className="form-control" 
-								placeholder="Slogan"
-								name="slogan"
-								id="slogan"
-								onChange={handleInputChange} 
-								value={formData.slogan}/>
-						</div>
-
-						<div className="form-group">
-							<label >Imagem 1 (1280x853)</label>
-							<Dropzone  onFileUploaded={setSelectedFile1} fileFromUrl={img1}/>
-						</div>
-
-						<div className="form-group">
-							<label >Imagem (1280x853)</label>
-							<Dropzone  onFileUploaded={setSelectedFile2} fileFromUrl={img2}/>
-						</div>
-
-						<div className="form-group">
-							<label >Imagem (1280x853)</label>
-							<Dropzone  onFileUploaded={setSelectedFile3} fileFromUrl={img3}/>
-						</div>
-						
+				<div className="box box-primary">
+					<div className="box-header with-border">
+						<h3 className="box-title">Tela Inicial</h3>
 					</div>
 					
+					<form role="form" onSubmit={handleSubmit}>
+						<div className="box-body">
+							<div className="form-group">
+								<label >Título</label>
+								<input 
+									className="form-control" 
+									placeholder="Informe o título"
+									name="titulo"
+									id="titulo"
+									onChange={handleInputChange}
+									value={formData.titulo} />
+							</div>
+							<div className="form-group">
+								<label >Subtítulo</label>
+								<input 
+									className="form-control" 
+									placeholder="Descreve o subtítulo" 
+									name="subtitulo"
+									id="subtitulo"
+									onChange={handleInputChange}
+									value={formData.subtitulo} />
+							</div>
+							
+							<div className="form-group">
+								<label >Descrição</label>
+								<input 
+									className="form-control" 
+									placeholder="Descrição" 
+									name="descricao"
+									id="descricao"
+									onChange={handleInputChange}
+									value={formData.descricao}
+								/>
+							</div>
+							<div className="form-group">
+								<label>Slogan</label>
+								<input 
+									className="form-control" 
+									placeholder="Slogan"
+									name="slogan"
+									id="slogan"
+									onChange={handleInputChange} 
+									value={formData.slogan}/>
+							</div>
 
-					<div className="box-footer">
-						<button type="submit" className="btn btn-primary">Submit</button>
-					</div>
-				</form>
-			</div>
+							<div className="form-group">
+								<label >Imagem 1 (1280x853)</label>
+								<Dropzone  onFileUploaded={setSelectedFile1} fileFromUrl={img1}/>
+							</div>
+
+							<div className="form-group">
+								<label >Imagem (1280x853)</label>
+								<Dropzone  onFileUploaded={setSelectedFile2} fileFromUrl={img2}/>
+							</div>
+
+							<div className="form-group">
+								<label >Imagem (1280x853)</label>
+								<Dropzone  onFileUploaded={setSelectedFile3} fileFromUrl={img3}/>
+							</div>
+							
+						</div>
+						
+
+						<div className="box-footer">
+							<button type="submit" className="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+		</div>
+
 			
 			
 		</>
