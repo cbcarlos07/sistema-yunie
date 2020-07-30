@@ -21,6 +21,8 @@ import CabecalhoCadastro from './manager/pages/cabecalho/cadastro';
 import Logo from './manager/pages/logo';
 import CartaoCredito from './manager/pages/cartao-credito';
 import CartaoCreditoCadastro from './manager/pages/cartao-credito/cadastro';
+import Menu from './manager/pages/menu/'
+import MenuCadastro from './manager/pages/menu/cadastro'
 const  Routes = () => (
     <BrowserRouter>
 			<Switch>
@@ -46,6 +48,9 @@ const  Routes = () => (
 				<ManagerLayoutRoute exact path="/cartao-credito" component={CartaoCredito}/>
 				<ManagerLayoutRoute exact path="/cartao-credito/cadastro" component={CartaoCreditoCadastro}/>
 				<ManagerLayoutRoute exact path="/cartao-credito/editar/:id" component={CartaoCreditoCadastro}/>
+				<ManagerLayoutRoute exact path="/menu" component={Menu}/>
+				<ManagerLayoutRoute exact path="/menu/cadastro" component={MenuCadastro}/>
+				<ManagerLayoutRoute exact path="/menu/editar/:id" component={MenuCadastro}/>
 				
 			</Switch>
             

@@ -1,15 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../../assets/introducing/images/logo.png'
 import api from '../../../services/api'
 import env from '../../../environments'
-
+import socketIOClient from "socket.io-client";
 const  Menu = () => {
 
-    const [ response, setResponse ] = useState()
+    const [ response, setResponse ] = useState(
+        {
+            logo: {},
+            menu: []
+        }
+    )
+
+    useEffect(()=>{
+        const socket = socketIOClient( env.host )
+        socket.on('menu', data => {
+            buscarDados()
+        })
+        socket.on('logo', data => {
+            buscarDados()
+        })
+    },[])
+
+    useEffect(()=>{
+        buscarDados()
+    }, [])
+
+
 
     function buscarDados() {
-        
+        api.get('/menu')
+           .then( resp => {
+               setResponse( resp.data )
+           })
     }
 
     
@@ -19,7 +43,7 @@ const  Menu = () => {
                 <div className="nav-content">
                     <h1>
                         <NavLink id="logo" className="logo" to="/banner" activeClassName="active">
-                            <img src={logo} alt="" className="img-fluid" /><span></span> Yunie
+                            <img src={response.logo.imagem} alt="" className="img-fluid" /><span></span> {response.logo.titulo}
                         </NavLink>
                     </h1>
                     
@@ -28,10 +52,13 @@ const  Menu = () => {
                             <label htmlFor="drop" className="toggle">Menu</label>
                             <input type="checkbox" id="drop" />
                             <ul className="menu">
-                                <li ><NavLink to="/" activeClassName="active">Início</NavLink></li>
-                                <li><NavLink to="/about" activeClassName="active">Sobre nós</NavLink></li>
-                                <li><NavLink to="/register" activeClassName="active">Cadastre-se</NavLink></li>
-                                <li><NavLink to="/contact" activeClassName="active">Nos contate</NavLink></li>
+                                {
+                                    response.menu.map( item => (
+                                        <li >
+                                            <NavLink to={item.url} activeClassName="active">{item.descricao}</NavLink>
+                                        </li>        
+                                    ) )
+                                }
                             </ul>
                         </nav>
                     </div>
