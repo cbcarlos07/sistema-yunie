@@ -8,7 +8,8 @@ import Dropzone from '../../../components/dropzone'
 const CartaoCreditoCadastro = ({ match, location }) => {
 	const [formData, setFormData] = useState({
 		descricao: '',
-		url: ''
+		url: '',
+		ordem: 0
     })
 	const history = useHistory()
 	const [title, setTitle] = useState('')
@@ -72,6 +73,18 @@ const CartaoCreditoCadastro = ({ match, location }) => {
 								id="url"
 								onChange={handleInputChange}
 								value={formData.url} />
+						</div>
+
+						<div className="form-group">
+							<label >Ordem</label>
+							<input 
+								className="form-control" 
+								placeholder="Ordem"
+								name="ordem"
+								id="ordem"
+								type="number"
+								onChange={handleInputChange}
+								value={formData.ordem} />
 						</div>
 					</div>
 					

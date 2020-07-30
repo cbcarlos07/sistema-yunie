@@ -18,7 +18,7 @@ const Home = () =>{
 
 
     useEffect(() => {
-        const socket = socketIOClient(env.host);
+        const socket = socketIOClient(env.host.dev);
         socket.on("change", data => {
             buscarDados()  
           

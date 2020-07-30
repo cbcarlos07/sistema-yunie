@@ -50,6 +50,7 @@ const CartaoCredito =  () => {
                                 <tr>
                                     <th>Descricao</th>
                                     <th>URL</th>
+                                    <th>Ordem</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -59,6 +60,7 @@ const CartaoCredito =  () => {
                                    <tr key={item.id}>
                                         <td>{item.descricao}</td>
                                         <td>{item.url} </td>
+                                        <td>{item.ordem} </td>
                                         <td>
                                             <Link to={`/menu/editar/${item.id}`} className="btn btn-xs btn-success">Editar</Link>
                                             <Link to={`#`} className="btn btn-xs btn-danger" onClick={() => perguntaRemover(item.id)}>Excluir</Link>

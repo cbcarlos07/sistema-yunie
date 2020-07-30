@@ -12,7 +12,7 @@ const Footer = () => {
 	})
 	const [paragraph, setParagraph] = useState()
 	useEffect(() => {
-        const socket = socketIOClient(env.host);
+        const socket = socketIOClient(env.host.dev);
         socket.on("logo", data => {
             buscarDados()  
 		});

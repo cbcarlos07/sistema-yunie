@@ -14,7 +14,7 @@ const  Menu = () => {
     )
 
     useEffect(()=>{
-        const socket = socketIOClient( env.host )
+        const socket = socketIOClient( env.host.dev )
         socket.on('menu', data => {
             buscarDados()
         })

@@ -9,7 +9,7 @@ const Header = () => {
 	const [response, setResponse] = useState({contato: {}, cabecalho: []})
 
 	useEffect(() => {
-        const socket = socketIOClient(env.host);
+        const socket = socketIOClient(env.host.dev);
         socket.on("header", data => {
             buscarDados()  
 		});

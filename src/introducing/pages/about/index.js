@@ -11,7 +11,7 @@ const About = ()=>{
 		buscarDados()
 	},[])
 	useEffect(() => {
-        const socket = socketIOClient(env.host);
+        const socket = socketIOClient(env.host.dev);
         socket.on("sobrenos", data => {
             buscarDados()  
         });
