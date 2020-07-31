@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react'
-
+import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import './style.css'
 
 import socketIOClient from "socket.io-client";
 import api from '../../../services/api'
 import env from '../../../environments'
-
+const options = [
+    {id: 1, name: 'Condomínio 1'},
+    {id: 2, name: 'Condomínio 2'},
+    {id: 3, name: 'Condomínio 3'},
+    {id: 4, name: 'Condomínio 4'},
+    {id: 5, name: 'Condomínio 5'},
+]
 
 const Home = () =>{
+    const [singleSelections, setSingleSelections] = useState([]);
     const [response, setResponse] = useState(
             {
                 banner: {}, 
@@ -34,7 +41,10 @@ const Home = () =>{
            .then( resp => {
                setResponse(resp.data)
            })  
-        
+      }
+
+      function escolherCondominio(value){
+          console.log('condominio', value);
       }
 
     
@@ -55,8 +65,16 @@ const Home = () =>{
                                        
                                         <div className="input-wrapper">
                                             <label htmlFor="stuff" className="fa fa-search input-icon"></label>
-                                            <input id="stuff" className="form-control text-condominio"placeholder="Informe seu condomínio"/>
-                                            
+                                          
+                                            <Typeahead
+                                                    id="basic-typeahead-single"
+                                                    labelKey="name"
+                                                    onChange={(selected) => escolherCondominio(selected)}
+                                                    options={options}
+                                                    placeholder="Verifique se seu condomínio é atendido"                                                    
+                                                    selected={singleSelections}
+                                                />
+                                        
                                         </div>
 
                                     </div>

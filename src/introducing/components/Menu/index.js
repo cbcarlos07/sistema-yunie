@@ -54,7 +54,7 @@ const  Menu = () => {
                             <ul className="menu">
                                 {
                                     response.menu.map( item => (
-                                        <li >
+                                        <li key={item.id}>
                                             <NavLink to={item.url} activeClassName="active">{item.descricao}</NavLink>
                                         </li>        
                                     ) )
