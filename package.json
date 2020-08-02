@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "adminlte-2-react": "^0.1.27",
     "axios": "^0.19.2",
+    "md5": "^2.2.1",
     "react": "^16.13.1",
     "react-bootstrap-typeahead": "^5.1.0",
     "react-confirm-alert": "^2.6.1",

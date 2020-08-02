@@ -8,6 +8,9 @@ import About from './introducing/pages/about';
 import Register from './introducing/pages/register';
 import Contact from './introducing/pages/contact';
 import Login from './introducing/pages/login';
+import Cliente from './introducing/pages/login/cliente';
+import Estabelecimento from './introducing/pages/login/estabelecimento';
+
 import ManagerLayoutRoute from './manager';
 import Home from './manager/pages/banner';
 import Find from './manager/pages/find';
@@ -23,6 +26,9 @@ import CartaoCredito from './manager/pages/cartao-credito';
 import CartaoCreditoCadastro from './manager/pages/cartao-credito/cadastro';
 import Menu from './manager/pages/menu/'
 import MenuCadastro from './manager/pages/menu/cadastro'
+import Usuario from './manager/pages/usuario'
+import UsuarioCadastro from './manager/pages/usuario/cadastro'
+
 const  Routes = () => (
     <BrowserRouter>
 			<Switch>
@@ -31,7 +37,9 @@ const  Routes = () => (
 				<IntroLayoutRoute path="/register" component={Register} />
 				<IntroLayoutRoute path="/contact" component={Contact} />
 				<IntroLayoutRoute path="/login" component={Login} />
-				
+				<IntroLayoutRoute path="/cliente" component={Cliente}/>
+				<IntroLayoutRoute path="/estabelecimento" component={Estabelecimento}/>
+
                 <ManagerLayoutRoute path="/banner" component={Home}/>
 				<ManagerLayoutRoute exact path="/encontra" component={Find}/>
 				<ManagerLayoutRoute path="/encontra/cadastro" component={FindCadastro}/>
@@ -51,6 +59,10 @@ const  Routes = () => (
 				<ManagerLayoutRoute exact path="/menu" component={Menu}/>
 				<ManagerLayoutRoute exact path="/menu/cadastro" component={MenuCadastro}/>
 				<ManagerLayoutRoute exact path="/menu/editar/:id" component={MenuCadastro}/>
+				<ManagerLayoutRoute exact path="/usuario" component={Usuario}/>
+				<ManagerLayoutRoute exact path="/usuario/cadastro" component={UsuarioCadastro}/>
+				<ManagerLayoutRoute exact path="/usuario/editar/:id" component={UsuarioCadastro}/>
+				
 				
 			</Switch>
             

@@ -29,6 +29,7 @@ const Menu = props => {
                         <li className={location.pathname == '/logo' ? 'active' : '' }><NavLink to="/logo" ><i className="fa fa-circle-o"></i>Logo</NavLink></li>
                         <li className={location.pathname == '/cartao-credito' ? 'active' : '' }><NavLink to="/cartao-credito" ><i className="fa fa-circle-o"></i>Cartão de Crédito</NavLink></li>
                         <li className={location.pathname == '/menu' ? 'active' : '' }><NavLink to="/menu" ><i className="fa fa-circle-o"></i>Menu</NavLink></li>
+                        <li className={location.pathname == '/usuario' ? 'active' : '' }><NavLink to="/usuario" ><i className="fa fa-circle-o"></i>Usuário</NavLink></li>
                     </ul>
                 </li>
             </ul>	
