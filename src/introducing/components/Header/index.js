@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import socketIOClient from "socket.io-client";
-import api from '../../../services/api';
+import { api } from '../../../services/api';
 import env from '../../../environments';
-
+import './styles.css'
 const Header = () => {
 
 	const [response, setResponse] = useState({contato: {}, cabecalho: []})

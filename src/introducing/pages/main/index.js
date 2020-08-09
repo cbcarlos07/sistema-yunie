@@ -3,7 +3,7 @@ import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import './style.css'
 
 import socketIOClient from "socket.io-client";
-import api from '../../../services/api'
+import { api } from '../../../services/api'
 import env from '../../../environments'
 const options = [
     {id: 1, name: 'Condomínio 1'},
@@ -33,6 +33,8 @@ const Home = () =>{
       }, []);
 
       useEffect(()=>{
+        console.log('env',process.env.REACT_APP_NOT_SECRET_CODE);
+        console.log('host',process.env.REACT_APP_HOST);
         buscarDados()
       },[])
 

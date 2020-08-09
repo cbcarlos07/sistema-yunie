@@ -29,6 +29,11 @@ import MenuCadastro from './manager/pages/menu/cadastro'
 import Usuario from './manager/pages/usuario'
 import UsuarioCadastro from './manager/pages/usuario/cadastro'
 
+import ManagerLayoutLoginRoute from './manager/login'
+import LoginManager from './manager/pages/login'
+import Sair from './manager/pages/sair';
+
+
 const  Routes = () => (
     <BrowserRouter>
 			<Switch>
@@ -40,28 +45,29 @@ const  Routes = () => (
 				<IntroLayoutRoute path="/cliente" component={Cliente}/>
 				<IntroLayoutRoute path="/estabelecimento" component={Estabelecimento}/>
 
-                <ManagerLayoutRoute path="/banner" component={Home}/>
-				<ManagerLayoutRoute exact path="/encontra" component={Find}/>
-				<ManagerLayoutRoute path="/encontra/cadastro" component={FindCadastro}/>
-				<ManagerLayoutRoute exact path="/encontra/editar/:id" component={FindCadastro}/>
-				<ManagerLayoutRoute exact path="/servicos" component={Services}/>
-				<ManagerLayoutRoute path="/servicos/cadastro" component={ServicesCadastro}/>
-				<ManagerLayoutRoute exact path="/servicos/editar/:id" component={ServicesCadastro}/>
-				<ManagerLayoutRoute path="/contato" component={Contato}/>
-				<ManagerLayoutRoute path="/sobre" component={SobreNos}/>
-				<ManagerLayoutRoute exact path="/cabecalho" component={Cabecalho}/>
-				<ManagerLayoutRoute exact path="/cabecalho/cadastro" component={CabecalhoCadastro}/>
-				<ManagerLayoutRoute exact path="/cabecalho/editar/:id" component={CabecalhoCadastro}/>
-				<ManagerLayoutRoute exact path="/logo" component={Logo}/>
-				<ManagerLayoutRoute exact path="/cartao-credito" component={CartaoCredito}/>
-				<ManagerLayoutRoute exact path="/cartao-credito/cadastro" component={CartaoCreditoCadastro}/>
-				<ManagerLayoutRoute exact path="/cartao-credito/editar/:id" component={CartaoCreditoCadastro}/>
-				<ManagerLayoutRoute exact path="/menu" component={Menu}/>
-				<ManagerLayoutRoute exact path="/menu/cadastro" component={MenuCadastro}/>
-				<ManagerLayoutRoute exact path="/menu/editar/:id" component={MenuCadastro}/>
-				<ManagerLayoutRoute exact path="/usuario" component={Usuario}/>
-				<ManagerLayoutRoute exact path="/usuario/cadastro" component={UsuarioCadastro}/>
-				<ManagerLayoutRoute exact path="/usuario/editar/:id" component={UsuarioCadastro}/>
+                <ManagerLayoutRoute path="/banner" component={Home} isPrivate />
+				<ManagerLayoutRoute exact path="/encontra" component={Find} isPrivate />
+				<ManagerLayoutRoute path="/encontra/cadastro" component={FindCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/encontra/editar/:id" component={FindCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/servicos" component={Services} isPrivate />
+				<ManagerLayoutRoute path="/servicos/cadastro" component={ServicesCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/servicos/editar/:id" component={ServicesCadastro} isPrivate />
+				<ManagerLayoutRoute path="/contato" component={Contato} isPrivate />
+				<ManagerLayoutRoute path="/sobre" component={SobreNos} isPrivate />
+				<ManagerLayoutRoute exact path="/cabecalho" component={Cabecalho} isPrivate />
+				<ManagerLayoutRoute exact path="/cabecalho/cadastro" component={CabecalhoCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/cabecalho/editar/:id" component={CabecalhoCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/logo" component={Logo} isPrivate />
+				<ManagerLayoutRoute exact path="/cartao-credito" component={CartaoCredito} isPrivate />
+				<ManagerLayoutRoute exact path="/cartao-credito/cadastro" component={CartaoCreditoCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/cartao-credito/editar/:id" component={CartaoCreditoCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/menu" component={Menu} isPrivate />
+				<ManagerLayoutRoute exact path="/menu/cadastro" component={MenuCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/menu/editar/:id" component={MenuCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/usuario" component={Usuario} isPrivate />
+				<ManagerLayoutRoute exact path="/usuario/cadastro" component={UsuarioCadastro} isPrivate />
+				<ManagerLayoutRoute exact path="/usuario/editar/:id" component={UsuarioCadastro} isPrivate />
+				<ManagerLayoutLoginRoute path="/login-site" component={LoginManager} />
 				
 				
 			</Switch>

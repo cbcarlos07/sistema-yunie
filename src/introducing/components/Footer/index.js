@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
 import socketIOClient from "socket.io-client";
-import api from '../../../services/api';
+import { api } from '../../../services/api';
 import env from '../../../environments';
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
 	const [response, setResponse] = useState({
 		logo: {}, 
@@ -100,7 +102,7 @@ const Footer = () => {
 
 	<div className="cpy-right text-center py-3">
 		<p>© 2020 Yunie. Todos os direitos reservados | Design by
-			<a href="http://w3layouts.com"> W3layouts.</a>
+			<Link to="/login-site"> W3layouts.</Link>
 		</p>
 	</div>
 

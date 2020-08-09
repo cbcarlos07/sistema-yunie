@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Locate from '../../components/Locate'
-import api from '../../../services/api'
+import { api } from '../../../services/api'
 import socketIOClient from "socket.io-client";
 import './styles.css'
 import env from '../../../environments'

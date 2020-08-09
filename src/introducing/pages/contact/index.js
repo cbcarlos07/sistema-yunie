@@ -3,7 +3,7 @@ import c1 from '../../../assets/introducing/images/c1.png'
 import c2 from '../../../assets/introducing/images/c2.png'
 import c3 from '../../../assets/introducing/images/c3.png'
 import Locate from '../../components/Locate'
-import api from '../../../services/api'
+import { api } from '../../../services/api'
 import socketIOClient from "socket.io-client";
 import env from '../../../environments'
 

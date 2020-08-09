@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import api from '../../../../services/api'
+import { api } from '../../../../services/api'
 import Dropzone from '../../../components/dropzone'
 import './styles.css'
 import { useHistory } from 'react-router-dom'

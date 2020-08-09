@@ -5,6 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import Routes from './routes';
+import { setAuthToken } from './services/api';
+
+if (window.performance) {
+    if (performance.navigation.type == 1) {
+      setAuthToken( localStorage.getItem("token") )
+      
+    } else {
+      
+    }
+  }
 
 ReactDOM.render(<Routes />,document.getElementById('root'));
 

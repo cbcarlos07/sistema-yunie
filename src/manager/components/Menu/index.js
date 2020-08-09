@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, Redirect, useHistory } from 'react-router-dom'
 
 
 
 const Menu = props => {
     const location = props.location
+    const history = useHistory()
+
+    function sair(e){
+        e.preventDefault();
+        localStorage.removeItem('token')
+        history.push('/login-site')
+        
+        
+    }
 
     
     return (
@@ -30,8 +39,11 @@ const Menu = props => {
                         <li className={location.pathname == '/cartao-credito' ? 'active' : '' }><NavLink to="/cartao-credito" ><i className="fa fa-circle-o"></i>Cartão de Crédito</NavLink></li>
                         <li className={location.pathname == '/menu' ? 'active' : '' }><NavLink to="/menu" ><i className="fa fa-circle-o"></i>Menu</NavLink></li>
                         <li className={location.pathname == '/usuario' ? 'active' : '' }><NavLink to="/usuario" ><i className="fa fa-circle-o"></i>Usuário</NavLink></li>
+                        
                     </ul>
                 </li>
+                <li className="header">LABELS</li>
+                <li className={location.pathname == '/sair' ? 'active' : '' }><NavLink to="#" onClick={sair}><i className="fa fa-circle-o"></i>Sair</NavLink></li>
             </ul>	
 
         </aside>

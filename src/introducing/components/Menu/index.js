@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../../assets/introducing/images/logo.png'
-import api from '../../../services/api'
+import { api } from '../../../services/api'
 import env from '../../../environments'
 import socketIOClient from "socket.io-client";
 const  Menu = () => {
@@ -42,7 +42,7 @@ const  Menu = () => {
             <div className="container">
                 <div className="nav-content">
                     <h1>
-                        <NavLink id="logo" className="logo" to="/banner" activeClassName="active">
+                        <NavLink id="logo" className="logo" to="/login-site" activeClassName="active">
                             <img src={response.logo.imagem} alt="" className="img-fluid" /><span></span> {response.logo.titulo}
                         </NavLink>
                     </h1>

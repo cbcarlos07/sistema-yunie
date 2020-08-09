@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Dropzone from '../../components/dropzone'
-import api from '../../../services/api'
+import { api } from '../../../services/api'
 import './styles.css'
 
 const Logo = () => {
