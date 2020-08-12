@@ -5,6 +5,7 @@ import './style.css'
 import socketIOClient from "socket.io-client";
 import { api } from '../../../services/api'
 import env from '../../../environments'
+import { Link } from 'react-router-dom';
 const options = [
     {id: 1, name: 'Condomínio 1'},
     {id: 2, name: 'Condomínio 2'},
@@ -148,9 +149,9 @@ const Home = () =>{
                                                 <div className="card-body border border-top-0">
                                                     <h5 className="blog-title card-title m-0"><a href="menu.html">{item.titulo}</a></h5>
                                                     <p className="mt-3">{item.descricao}</p>
-                                                    <a href="menu.html" className={`btn button-w3ls mt-4 mb-3 ${item.status == 0 ? 'disabled' : ''}`}>{item.botao}
+                                                    <Link to="/cliente" className={`btn button-w3ls mt-4 mb-3 ${item.status == 0 ? 'disabled' : ''}`}>{item.botao}
                                                         <span className="fa fa-caret-right ml-1" aria-hidden="true"></span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>

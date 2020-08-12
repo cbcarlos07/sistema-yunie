@@ -21,11 +21,11 @@
     "socket.io-client": "^2.3.0",
     "surge": "^0.21.5"
   },
-  "scripts": {        
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start": "env-cmd -f .env.development react-scripts start",
-    "build": "env-cmd -f .env.production react-scripts build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
