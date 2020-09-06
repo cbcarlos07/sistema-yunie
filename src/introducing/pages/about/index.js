@@ -18,7 +18,7 @@ const About = ()=>{
       }, []);
 
 	function buscarDados(){
-		api.get('/yunie/v1/sobre-nos/1')
+		api.get('/sobre-nos')
 		   .then( resp =>{
 			let newText = resp.data.detalhe.replace(/<br\s*[\/]?>/gi, "\n");
 			   setParagraph( newText )

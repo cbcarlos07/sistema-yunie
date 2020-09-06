@@ -5,16 +5,11 @@ import './style.css'
 import socketIOClient from "socket.io-client";
 import { api } from '../../../services/api'
 import env from '../../../environments'
-const options = [
-    {id: 1, name: 'Condomínio 1'},
-    {id: 2, name: 'Condomínio 2'},
-    {id: 3, name: 'Condomínio 3'},
-    {id: 4, name: 'Condomínio 4'},
-    {id: 5, name: 'Condomínio 5'},
-]
+
 
 const Home = () =>{
     const [singleSelections, setSingleSelections] = useState([]);
+    const [options, setOptions] = useState([])
     const [response, setResponse] = useState(
             {
                 banner: {}, 
@@ -33,8 +28,11 @@ const Home = () =>{
       }, []);
 
       useEffect(()=>{
-        console.log('env',process.env.REACT_APP_NOT_SECRET_CODE);
-        console.log('host',process.env.REACT_APP_HOST);
+          buscarCondominios()
+      })
+
+
+      useEffect(()=>{        
         buscarDados()
       },[])
 
@@ -43,6 +41,14 @@ const Home = () =>{
            .then( resp => {
                setResponse(resp.data)
            })  
+      }
+
+      function buscarCondominios(){
+          api.get('/condominio')
+             .then( response =>{
+                 const dados = response.data.map( c => ({id: c.id, name: c.nome} ))
+                 setOptions( dados )
+             } )
       }
 
       function escolherCondominio(value){
