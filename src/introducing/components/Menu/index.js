@@ -42,7 +42,7 @@ const  Menu = () => {
             <div className="container">
                 <div className="nav-content">
                     <h1>
-                        <NavLink id="logo" className="logo" to="/login-site" activeClassName="active">
+                        <NavLink id="logo" className="logo" to="/" activeClassName="active">
                             <img src={response.logo.imagem} alt="" className="img-fluid" /><span></span> {response.logo.titulo}
                         </NavLink>
                     </h1>
