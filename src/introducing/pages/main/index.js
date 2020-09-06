@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
+import { Link, useHistory }  from 'react-router-dom'
 import './style.css'
 
 import socketIOClient from "socket.io-client";
+import { Base64 } from 'js-base64';
+
 import { api } from '../../../services/api'
 import env from '../../../environments'
 
 const Home = () =>{
     const [singleSelections, setSingleSelections] = useState([]);
     const [options, setOptions] = useState([])
+    const history = useHistory()
     const [response, setResponse] = useState(
             {
                 banner: {}, 
@@ -51,7 +55,12 @@ const Home = () =>{
       }
 
       function escolherCondominio(value){
-          console.log('condominio', value);
+          
+          
+          const condB64 = Base64.encode( value[0].name )
+          
+          
+          history.push(`/cliente/${condB64}`)
       }
 
     

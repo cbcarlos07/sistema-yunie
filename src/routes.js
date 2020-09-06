@@ -42,7 +42,8 @@ const  Routes = () => (
 				<IntroLayoutRoute path="/register" component={Register} />
 				<IntroLayoutRoute path="/contact" component={Contact} />
 				<IntroLayoutRoute path="/login" component={Login} />
-				<IntroLayoutRoute path="/cliente" component={Cliente}/>
+				<IntroLayoutRoute exact path="/cliente" component={Cliente}/>
+				<IntroLayoutRoute  path="/cliente/:condominio" component={Cliente}/>
 				<IntroLayoutRoute path="/estabelecimento" component={Estabelecimento}/>
 
                 <ManagerLayoutRoute path="/banner" component={Home} isPrivate />

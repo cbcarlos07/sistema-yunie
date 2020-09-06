@@ -47,7 +47,7 @@ const Footer = () => {
             <div className="row footer-top">
                 <div className="col-lg-4 footer-grid_section_1its footer-text">
                     <h2>
-                        <a className="logo text-wh" href="index.html">
+                        <a className="logo text-wh" href="#home">
                             <img src={response.logo.imagem} alt="" className="img-fluid" /><span></span> {response.logo.titulo}
                         </a>
                     </h2>
