@@ -100,10 +100,9 @@ const SobreNos = () => {
 								name="detalhe"
 								id="detalhe"
 								onChange={handleInputChange} 
-								value={paragraph}
+								value={formData.detalhe}
 								rows="5">
-									
-									</textarea>
+							</textarea>
 						</div>
 
 						<div className="form-group">

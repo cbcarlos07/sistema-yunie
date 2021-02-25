@@ -75,7 +75,7 @@ const Logo = () => {
 								name="descricao"
 								id="descricao"
 								onChange={handleInputChange} 
-								value={paragraph}
+								value={formData.descricao}
 								rows="5">
 									
 									</textarea>

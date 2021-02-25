@@ -234,7 +234,7 @@ const Home = () =>{
 									</div>
 									<div className="col-8 wthree_banner_bottom_grid_right pr-lg-0">
 										<h4 className="mb-3"><a href="login.html">{response.servicos.items[3].titulo}</a></h4>
-										<p>{response.servicos.items[2].descricao}</p>
+										<p>{response.servicos.items[3].descricao}</p>
 									</div>
 								</div>
 							</div>

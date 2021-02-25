@@ -1,6 +1,6 @@
 import axios from 'axios'
 import env from '../environments'
-
+console.log('env',env);
  const setAuthToken = token => {
     if (token) {
     //applying token

@@ -1,6 +1,6 @@
 const env = {
     host: {
-        prod: 'http://yunieapp.com.br:21345',
+        prod: 'https://yunieapp-site.herokuapp.com',
         dev: 'http://localhost:3001'
     },  
     endpoint: '/yunie/v1'
